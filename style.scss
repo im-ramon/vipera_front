@@ -1,0 +1,187 @@
+// FONTES
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+// VARIÁVEIS
+
+// Cores
+$background1: #f9fafc;
+$cinza1: #f7f7f7;
+
+// Valores padrões
+$borderRadius: 28px;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans", sans-serif;
+}
+
+html,
+body {
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+}
+
+#app {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 40px 1fr 25px;
+}
+
+header {
+    width: 100%;
+    background: tomato;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    #logo {
+        display: flex;
+        align-items: center;
+        padding-left: 1em;
+    }
+
+    #data_hoje {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    nav {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 1em;
+
+        #nav-itens {
+            position: absolute;
+            right: 1em;
+            top: 40px;
+            background: brown;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            display: none;
+        }
+
+        &:hover {
+            #nav-itens {
+                display: flex;
+            }
+        }
+
+        img {
+            width: 25px;
+        }
+    }
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    background: rgb(156, 255, 161);
+
+    #root {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+#links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1em;
+
+    .links-item {
+        background: palegoldenrod;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: $borderRadius;
+        transition: transform 0.3s ease-out;
+
+        &:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-out;
+        }
+
+        img {
+            width: 60px;
+        }
+    }
+}
+
+#registro-area {
+    background: rgb(93, 93, 255);
+    border-radius: $borderRadius;
+    width: 90%;
+    max-width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1em 1.7em;
+
+    form {
+        width: 100%;
+
+        .form-item {
+            width: 100%;
+            margin-bottom: 1em;
+            display: flex;
+
+            &.identificacao {
+                background: darkcyan;
+                position: relative;
+
+                input {
+                    padding: 0 36px 0 1em;
+                }
+
+                img {
+                    position: absolute;
+                    right: 10px;
+                    width: 20px;
+                }
+            }
+
+            input {
+                flex: 1;
+                margin-left: 10px;
+                border-radius: $borderRadius;
+                outline: none;
+                border: none;
+                height: 20px;
+                padding: 0 10px 0 1em;
+            }
+        }
+    }
+
+    #btn-cadastrar_usuario {
+        border-radius: $borderRadius;
+        background: rgb(156, 255, 161);
+        border: none;
+        font-size: 16px;
+        margin: 1em 0;
+        padding: 0.5em 1.7em;
+    }
+}
+
+.titulo {
+    margin: 1em 0;
+}
+
+footer {
+    width: 100%;
+    background: rgb(95, 183, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
