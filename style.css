@@ -41,7 +41,8 @@ header #logo {
   padding-left: 1em;
 }
 
-header #data_hoje {
+header #data_hoje,
+header #calendar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -51,6 +52,10 @@ header #data_hoje {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+header #calendar {
+  margin-right: 7px;
 }
 
 header nav {
@@ -139,7 +144,7 @@ main #root {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border-radius: 28px;
+  border-radius: 16px;
   -webkit-transition: -webkit-transform 0.3s ease-out;
   transition: -webkit-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
@@ -159,9 +164,28 @@ main #root {
   width: 60px;
 }
 
-#registro-area {
+#modal_consulta {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #14141490;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#registro-area,
+#consulta-area {
   background: #5d5dff;
-  border-radius: 28px;
+  border-radius: 16px;
   width: 90%;
   max-width: 450px;
   display: -webkit-box;
@@ -180,11 +204,13 @@ main #root {
   padding: 1em 1.7em;
 }
 
-#registro-area form {
+#registro-area form,
+#consulta-area form {
   width: 100%;
 }
 
-#registro-area form .form-item {
+#registro-area form .form-item,
+#consulta-area form .form-item {
   width: 100%;
   margin-bottom: 1em;
   display: -webkit-box;
@@ -192,35 +218,69 @@ main #root {
   display: flex;
 }
 
-#registro-area form .form-item.identificacao {
-  background: darkcyan;
+#registro-area form .form-item.identificacao,
+#consulta-area form .form-item.identificacao {
   position: relative;
 }
 
-#registro-area form .form-item.identificacao input {
+#registro-area form .form-item.identificacao input,
+#consulta-area form .form-item.identificacao input {
   padding: 0 36px 0 1em;
 }
 
-#registro-area form .form-item.identificacao img {
+#registro-area form .form-item.identificacao img,
+#consulta-area form .form-item.identificacao img {
   position: absolute;
   right: 10px;
   width: 20px;
 }
 
-#registro-area form .form-item input {
+#registro-area form .form-item input[type="text"],
+#registro-area form .form-item input[type="date"],
+#consulta-area form .form-item input[type="text"],
+#consulta-area form .form-item input[type="date"] {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   margin-left: 10px;
-  border-radius: 28px;
+  border-radius: 16px;
   outline: none;
   border: none;
   height: 20px;
   padding: 0 10px 0 1em;
 }
 
-#registro-area #btn-cadastrar_usuario {
-  border-radius: 28px;
+#registro-area form .form-item #cafe,
+#consulta-area form .form-item #cafe {
+  margin: 1px 4px 1px 0px;
+}
+
+#registro-area form .form-item #almoco,
+#registro-area form .form-item #janta,
+#consulta-area form .form-item #almoco,
+#consulta-area form .form-item #janta {
+  margin: 1px 4px 1px 30px;
+}
+
+#registro-area form .form-item fieldset,
+#consulta-area form .form-item fieldset {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.8em 0.3em;
+  border-radius: 16px;
+}
+
+#registro-area #btn-cadastrar_usuario,
+#consulta-area #btn-cadastrar_usuario {
+  border-radius: 16px;
   background: #9cffa1;
   border: none;
   font-size: 16px;
