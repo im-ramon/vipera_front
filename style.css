@@ -183,6 +183,7 @@ main #root {
 }
 
 #registro-area,
+#estisticas-area,
 #consulta-area {
   background: #5d5dff;
   border-radius: 16px;
@@ -205,11 +206,13 @@ main #root {
 }
 
 #registro-area form,
+#estisticas-area form,
 #consulta-area form {
   width: 100%;
 }
 
 #registro-area form .form-item,
+#estisticas-area form .form-item,
 #consulta-area form .form-item {
   width: 100%;
   margin-bottom: 1em;
@@ -219,24 +222,32 @@ main #root {
 }
 
 #registro-area form .form-item.identificacao,
+#estisticas-area form .form-item.identificacao,
 #consulta-area form .form-item.identificacao {
   position: relative;
 }
 
 #registro-area form .form-item.identificacao input,
+#estisticas-area form .form-item.identificacao input,
 #consulta-area form .form-item.identificacao input {
   padding: 0 36px 0 1em;
 }
 
 #registro-area form .form-item.identificacao img,
+#estisticas-area form .form-item.identificacao img,
 #consulta-area form .form-item.identificacao img {
   position: absolute;
   right: 10px;
   width: 20px;
 }
 
+#registro-area form .form-item select,
 #registro-area form .form-item input[type="text"],
 #registro-area form .form-item input[type="date"],
+#estisticas-area form .form-item select,
+#estisticas-area form .form-item input[type="text"],
+#estisticas-area form .form-item input[type="date"],
+#consulta-area form .form-item select,
 #consulta-area form .form-item input[type="text"],
 #consulta-area form .form-item input[type="date"] {
   -webkit-box-flex: 1;
@@ -251,18 +262,22 @@ main #root {
 }
 
 #registro-area form .form-item #cafe,
+#estisticas-area form .form-item #cafe,
 #consulta-area form .form-item #cafe {
   margin: 1px 4px 1px 0px;
 }
 
 #registro-area form .form-item #almoco,
 #registro-area form .form-item #janta,
+#estisticas-area form .form-item #almoco,
+#estisticas-area form .form-item #janta,
 #consulta-area form .form-item #almoco,
 #consulta-area form .form-item #janta {
   margin: 1px 4px 1px 30px;
 }
 
 #registro-area form .form-item fieldset,
+#estisticas-area form .form-item fieldset,
 #consulta-area form .form-item fieldset {
   width: 100%;
   display: -webkit-box;
@@ -279,6 +294,7 @@ main #root {
 }
 
 #registro-area #btn-cadastrar_usuario,
+#estisticas-area #btn-cadastrar_usuario,
 #consulta-area #btn-cadastrar_usuario {
   border-radius: 16px;
   background: #9cffa1;
@@ -286,6 +302,61 @@ main #root {
   font-size: 16px;
   margin: 1em 0;
   padding: 0.5em 1.7em;
+}
+
+#estisticas-area {
+  width: 90%;
+  max-width: 1200px;
+}
+
+#estisticas-area #estisticas-container {
+  width: 100%;
+  border-radius: 16px;
+  padding: 0.5em 1em;
+  display: -ms-grid;
+  display: grid;
+  gap: 1em;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  background: #ebff35;
+}
+
+#estisticas-area #estisticas-container #estisticas_hoje,
+#estisticas-area #estisticas-container #estisticas_amanha {
+  border-radius: 16px;
+  text-align: center;
+  background: antiquewhite;
+}
+
+#estisticas-area #estisticas-container #estisticas_hoje .estisticas-tabela,
+#estisticas-area #estisticas-container #estisticas_amanha .estisticas-tabela {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+  -ms-grid-rows: (1fr)[8];
+      grid-template-rows: repeat(8, 1fr);
+}
+
+#estisticas-area #estisticas-container #estisticas_hoje .estisticas-tabela span,
+#estisticas-area #estisticas-container #estisticas_amanha .estisticas-tabela span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  border: 1px solid #00000050;
+}
+
+#estisticas-area #estisticas-container #estisticas_hoje .estisticas-tabela .estisticas-tabela-cabecalho,
+#estisticas-area #estisticas-container #estisticas_amanha .estisticas-tabela .estisticas-tabela-cabecalho {
+  font-weight: bold;
+  background: #e1e1e1;
 }
 
 .titulo {
