@@ -1,26 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <HeaderComponent></HeaderComponent>
+  <main>
+    <section id="root">
+      <router-link class="botaotemporario" to="/">Página Inicial</router-link>
+      <router-view></router-view>
+    </section>
+  </main>
+  <FooterComponent></FooterComponent>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderComponent from './components/layouts/HeaderComponent.vue';
+import FooterComponent from './components/layouts/FooterComponent.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    HeaderComponent,
+    FooterComponent,
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.botaotemporario {
+  margin: 2em;
+  grid-column: 1 / 3;
+}
+
+main #root {
+  flex-direction: column;
 }
 </style>
