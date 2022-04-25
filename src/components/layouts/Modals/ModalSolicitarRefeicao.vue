@@ -1,7 +1,9 @@
 <template>
   <div id="modal_consulta">
     <div id="registro-area">
+      <slot></slot>
       <h1 class="titulo">Solicitar refeição</h1>
+
       <form>
         <div class="form-item">
           <label for="nome_usuario">Nome completo:</label>

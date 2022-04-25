@@ -1,5 +1,8 @@
 <template>
   <div id="consulta-area">
+    <ModalSolicitarRefeicao v-if="modal">
+      <img src="svg/x.svg" alt="barcode" class="btn_fechar" @click="modal = false" />
+    </ModalSolicitarRefeicao>
     <h1 class="titulo">Solicitar refeição</h1>
     <form>
       <div class="form-item identificacao">
@@ -21,12 +24,24 @@
       </div>
     </form>
 
-    <button id="btn-cadastrar_usuario">Consultar</button>
+    <button id="btn-cadastrar_usuario" @click="modal = true">Consultar</button>
   </div>
 </template>
 
 <script>
-export default {};
+import ModalSolicitarRefeicao from '../layouts/Modals/ModalSolicitarRefeicao.vue';
+
+export default {
+  name: 'App',
+  components: {
+    ModalSolicitarRefeicao,
+  },
+  data() {
+    return {
+      modal: false,
+    };
+  },
+};
 </script>
 
 <style></style>

@@ -6,6 +6,11 @@
 // Cores
 $background1: #f9fafc;
 $cinza1: #f7f7f7;
+$preto: #121212;
+$verde: #319957;
+$amarelo: #eeb81f;
+$azul: #1a518e;
+$branco: #ffffff;
 
 // Valores padrões
 $borderRadius: 16px;
@@ -27,20 +32,17 @@ body {
 #app {
     height: 100%;
     display: grid;
-    grid-template-rows: 40px 1fr 25px;
+    grid-template-columns: 250px 1fr;
 }
 
 header {
     width: 100%;
+    height: 40px;
     background: tomato;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    #logo {
-        display: flex;
-        align-items: center;
-        padding-left: 1em;
-    }
+    position: absolute;
+    top: 0;
+    grid-template-columns: 8fr 1fr;
 
     #data_hoje,
     #calendar {
@@ -81,36 +83,55 @@ header {
     }
 }
 
+aside {
+    background: #319957;
+    width: 250px;
+    display: grid;
+    grid-template-rows: 1fr 8fr 1fr;
+
+    #logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 1em;
+    }
+}
+
 main {
     width: 100%;
     height: 100%;
     background: rgb(156, 255, 161);
+    overflow-y: scroll;
+    position: relative;
 
     #root {
         height: 100%;
         display: flex;
+        padding: 2em 1em;
         align-items: center;
         justify-content: center;
     }
 }
 
 #links {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 1em;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    background: #adbdb3;
 
     .links-item {
         background: palegoldenrod;
-        width: 200px;
-        height: 200px;
+        width: 90%;
+        margin-top: 1.7em;
+        height: 50px;
         display: flex;
         align-items: center;
-        flex-wrap: wrap;
-        flex-direction: column;
-        justify-content: center;
-        border-radius: $borderRadius;
+        border-radius: 10px;
+        padding-left: 1em;
         transition: transform 0.3s ease-out;
+        text-decoration: none;
 
         &:hover {
             transform: scale(1.05);
@@ -118,7 +139,8 @@ main {
         }
 
         img {
-            width: 60px;
+            width: 25px;
+            margin-right: 0.7em;
         }
     }
 }
@@ -126,6 +148,7 @@ main {
 #modal_consulta {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background: #14141490;
@@ -133,6 +156,18 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    backdrop-filter: blur(3px);
+}
+
+#registro-area {
+    position: relative;
+
+    .btn_fechar {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30px;
+    }
 }
 
 #registro-area,
@@ -263,4 +298,5 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }

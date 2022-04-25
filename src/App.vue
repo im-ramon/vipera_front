@@ -1,34 +1,27 @@
 <template>
-  <HeaderComponent></HeaderComponent>
+  <SidebarComponent></SidebarComponent>
   <main>
+    <HeaderComponent></HeaderComponent>
     <section id="root">
-      <router-link class="botaotemporario" to="/">Página Inicial</router-link>
       <router-view></router-view>
     </section>
+    <FooterComponent></FooterComponent>
   </main>
-  <FooterComponent></FooterComponent>
 </template>
 
 <script>
 import HeaderComponent from './components/layouts/HeaderComponent.vue';
 import FooterComponent from './components/layouts/FooterComponent.vue';
+import SidebarComponent from './components/layouts/SidebarComponent.vue';
 
 export default {
   name: 'App',
   components: {
     HeaderComponent,
     FooterComponent,
+    SidebarComponent,
   },
 };
 </script>
 
-<style>
-.botaotemporario {
-  margin: 2em;
-  grid-column: 1 / 3;
-}
-
-main #root {
-  flex-direction: column;
-}
-</style>
+<style></style>

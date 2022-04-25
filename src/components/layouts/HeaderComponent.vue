@@ -1,10 +1,5 @@
 <template>
   <header>
-    <div id="logo">
-      <img src="svg/e.svg" alt="Logo 'E'" />
-      <span>e-numer</span>
-    </div>
-
     <div id="data_hoje">
       <div id="calendar">
         <img src="svg/calendar.svg" alt="Calendário" />
