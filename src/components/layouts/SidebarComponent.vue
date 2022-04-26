@@ -13,7 +13,7 @@
         <img src="/svg/user-add.svg" alt="Cadastrar usuário" />
         <span>Cadastrar usuário</span>
       </router-link>
-      <router-link to="/cadastrarusuario" class="links-item">
+      <router-link to="/gerenciarusuario" class="links-item">
         <img src="/svg/user-edit.svg" alt="Cadastrar usuário" />
         <span>Gerenciar usuários</span>
       </router-link>

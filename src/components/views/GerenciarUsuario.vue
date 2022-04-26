@@ -1,6 +1,6 @@
 <template>
   <PageArea>
-    <template v-slot:titulo> Cadastrar usuário </template>
+    <template v-slot:titulo> Gerenciar usuário </template>
     <template v-slot:body>
       <form>
         <div class="form-item">

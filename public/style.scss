@@ -6,7 +6,8 @@
 // Cores
 $background_cinza: #f8f8f8;
 $cinza_claro: #f7f7f7;
-$cinza_transparente: #79797925;
+$cinza_transparente25: #79797925;
+$cinza_transparente50: #79797950;
 $preto: #121212;
 $dark: #353a40;
 $verde: #319957;
@@ -29,19 +30,20 @@ body {
     font-size: 14px;
     width: 100%;
     height: 100%;
+    background: $background_cinza;
 }
 
 #app {
     height: 100%;
     display: grid;
     grid-template-columns: 250px 1fr;
+    gap: 1em;
 }
 
 header {
     width: 100%;
     height: 50px;
     display: grid;
-    position: absolute;
     top: 0;
     grid-template-columns: 8fr 1fr;
 
@@ -80,7 +82,7 @@ header {
             position: absolute;
             background: $branco;
             box-sizing: content-box;
-            border: 2px solid $cinza_transparente;
+            border: 2px solid $cinza_transparente25;
             border-radius: $borderRadius;
             right: 1em;
             padding: 10px 16px;
@@ -101,7 +103,7 @@ header {
                 padding: 2px 15px;
                 color: $preto;
                 box-sizing: content-box;
-                border: 1px solid $cinza_transparente;
+                border: 1px solid $cinza_transparente25;
                 transition: all 0.3s ease-out;
 
                 &:hover {
@@ -118,27 +120,12 @@ header {
     }
 }
 
-main {
-    width: 100%;
-    height: 100%;
-    background: $background_cinza;
-    overflow-y: scroll;
-    position: relative;
-
-    #root {
-        height: 100%;
-        display: flex;
-        padding: 2em 1em;
-        align-items: center;
-        justify-content: center;
-    }
-}
-
 aside {
     background: $branco;
     width: 260px;
     display: grid;
     grid-template-rows: 1fr 8fr 1fr;
+    border-right: 2px solid $cinza_transparente25;
     z-index: 2;
 
     #logo {
@@ -211,11 +198,94 @@ aside {
     }
 
     #app_version {
+        user-select: none;
         p {
             width: 100%;
             text-align: center;
             color: #8b8b8bb3;
             font-size: 10px;
+        }
+    }
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    background: $background_cinza;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-rows: 1fr 12fr;
+    gap: 10px;
+
+    #root {
+        height: 100%;
+        display: flex;
+        padding: 2em 1em;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .page_area {
+        background: $branco;
+        width: 100%;
+        border: 2px solid $cinza_transparente25;
+        height: 100%;
+        border-radius: $borderRadius;
+        padding: 10px 2em;
+
+        h1.titulo {
+            margin: 1em 0;
+            border-bottom: 4px double $cinza_transparente25;
+            padding: 0 0 10px 12px;
+        }
+
+        form {
+            width: 66%;
+            padding-left: 12px;
+
+            .form-item {
+                width: 100%;
+                margin-bottom: 1em;
+                display: flex;
+                align-items: center;
+
+                &.identificacao {
+                    position: relative;
+
+                    img {
+                        position: absolute;
+                        right: 10px;
+                        width: 20px;
+                    }
+                }
+
+                #cafe {
+                    margin: 1px 4px 1px 0px;
+                }
+
+                #almoco,
+                #janta {
+                    margin: 1px 4px 1px 30px;
+                }
+
+                fieldset {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0.8em 0.3em;
+                    border-radius: $borderRadius;
+                }
+            }
+        }
+
+        #btn-cadastrar_usuario {
+            border-radius: $borderRadius;
+            background: rgb(156, 255, 161);
+            border: none;
+            font-size: 16px;
+            margin: 1em 0;
+            padding: 0.5em 1.7em;
         }
     }
 }
@@ -257,69 +327,6 @@ aside {
     align-items: center;
     flex-direction: column;
     padding: 1em 1.7em;
-
-    form {
-        width: 100%;
-
-        .form-item {
-            width: 100%;
-            margin-bottom: 1em;
-            display: flex;
-
-            &.identificacao {
-                position: relative;
-
-                input {
-                    padding: 0 36px 0 1em;
-                }
-
-                img {
-                    position: absolute;
-                    right: 10px;
-                    width: 20px;
-                }
-            }
-
-            select,
-            input[type="text"],
-            input[type="date"] {
-                flex: 1;
-                margin-left: 10px;
-                border-radius: $borderRadius;
-                outline: none;
-                border: none;
-                height: 20px;
-                padding: 0 10px 0 1em;
-            }
-
-            #cafe {
-                margin: 1px 4px 1px 0px;
-            }
-
-            #almoco,
-            #janta {
-                margin: 1px 4px 1px 30px;
-            }
-
-            fieldset {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 0.8em 0.3em;
-                border-radius: $borderRadius;
-            }
-        }
-    }
-
-    #btn-cadastrar_usuario {
-        border-radius: $borderRadius;
-        background: rgb(156, 255, 161);
-        border: none;
-        font-size: 16px;
-        margin: 1em 0;
-        padding: 0.5em 1.7em;
-    }
 }
 
 #estisticas-area {
@@ -363,10 +370,6 @@ aside {
     }
 }
 
-.titulo {
-    margin: 1em 0;
-}
-
 footer {
     width: 100%;
     background: rgb(95, 183, 255);
@@ -374,6 +377,30 @@ footer {
     justify-content: center;
     align-items: center;
     display: none;
+}
+
+label {
+    line-height: 100%;
+    height: 100%;
+}
+
+//ESTILOS GERAIS
+input,
+select {
+    flex: 1;
+    margin-left: 10px;
+    background: $branco;
+    border: 2px solid $cinza_transparente50;
+    border-radius: 16px;
+    outline: none;
+    box-sizing: content-box;
+    height: 22px;
+    padding: 0 10px 0 1em;
+}
+
+input[type="date"],
+select {
+    flex: none;
 }
 
 // ESTILOS PADRONIZADOS
