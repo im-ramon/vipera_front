@@ -145,27 +145,43 @@ header nav img {
 
 aside {
   background: #ffffff;
-  width: 260px;
+  border-right: 1px solid #79797925;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 1fr 8fr 1fr;
       grid-template-rows: 1fr 8fr 1fr;
-  border-right: 1px solid #79797925;
+  width: 260px;
   z-index: 2;
 }
 
 aside #logo {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 1em;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-left: 1em;
+}
+
+aside #logo #logo_area {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: linear-gradient(275deg, #85ffbd 0%, #fffb7d 100%);
+  border-radius: 16px;
+  border: 1px solid #79797925;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 50px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 1em;
+  padding: 1em 2em;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -173,12 +189,11 @@ aside #logo {
 }
 
 aside #logo img {
-  width: 30px;
-  border: 2px solid #ffffff;
-  padding: 6px;
+  border-radius: 14px;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
-  border-radius: 14px;
+  padding: 3px;
+  width: 30px;
 }
 
 aside #logo span {
@@ -225,6 +240,10 @@ aside #links .links-item:hover {
   background: #00000017;
 }
 
+aside #links .links-item:hover span {
+  border-right: 4px double #121212;
+}
+
 aside #links .links-item.router-link-exact-active {
   background: #121212;
   -webkit-transition: all 0.3s ease-in-out;
@@ -252,12 +271,22 @@ aside #app_version {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-bottom: 1em;
 }
 
 aside #app_version p {
   width: 100%;
   text-align: center;
-  color: #8b8b8bb3;
+  color: #8b8b8b8f;
   font-size: 10px;
 }
 

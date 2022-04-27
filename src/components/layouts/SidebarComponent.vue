@@ -1,8 +1,10 @@
 <template>
   <aside>
     <div id="logo">
-      <img src="svg/e.svg" alt="Logo 'E'" />
-      <span>e-numer</span>
+      <div id="logo_area">
+        <img src="svg/e.svg" alt="Logo 'E'" />
+        <span>e-numer</span>
+      </div>
     </div>
     <div id="links">
       <router-link to="/" class="links-item">
@@ -31,9 +33,11 @@
       </router-link>
     </div>
     <div id="app_version">
-      <p>Web App <strong>Enumer</strong></p>
-      <p>Todos os direitos reservados © {{ anoAtual }}</p>
-      <p>Versão 1.0.1 | Alpha</p>
+      <div id="app_version_area">
+        <p>Web App <strong>Enumer</strong></p>
+        <p>Todos os direitos reservados © {{ anoAtual }}</p>
+        <p>Versão 1.0.1 | Alpha</p>
+      </div>
     </div>
   </aside>
 </template>
