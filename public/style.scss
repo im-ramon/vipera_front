@@ -184,6 +184,7 @@ aside {
                 background: #00000017;
 
                 span {
+                    transition: all 0.3s ease-in-out;
                     border-right: 4px double $preto;
                 }
             }
@@ -204,6 +205,7 @@ aside {
             }
 
             span {
+                transition: all 0.3s ease-in-out;
                 width: 80%;
                 border-right: 4px double #fff;
             }
@@ -400,11 +402,70 @@ label {
 #graficos {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
     gap: 1em;
 
-    #planet {
-        grid-column: 1 / 6;
+    .grafico-item {
+        border: 1px solid $cinza_transparente25;
+        border-radius: $borderRadius;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        box-sizing: content-box;
+        padding: 12px 26px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            transition: all 0.3s ease-in-out;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        }
+    }
+    @mixin card_pequeno {
+        align-items: flex-start;
+        justify-content: space-around;
+        flex-direction: column;
+
+        h5 {
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        h2,
+        span {
+            color: $verde;
+            text-align: right;
+            width: 100%;
+        }
+    }
+    #grafico-1 {
+        grid-column: 1 / 2;
+
+        @include card_pequeno;
+    }
+    #grafico-2 {
+        grid-column: 2 / 3;
+        background: $background_cinza;
+
+        @include card_pequeno;
+    }
+    #grafico-3 {
+        grid-column: 3 / 5;
+
+        @include card_pequeno;
+    }
+    #grafico-4 {
+        grid-column: 5 / 7;
+        grid-row: 1 / 5;
+        background: $background_cinza;
+    }
+    #grafico-5 {
+        grid-column: 1 / 5;
+        grid-row: 2 / 5;
+        background: $background_cinza;
+    }
+    #grafico-6 {
+        grid-column: 1 / 7;
     }
 }
 
