@@ -2,6 +2,9 @@
   <PageArea>
     <template v-slot:titulo> Registrar presença </template>
     <template v-slot:body>
+      <ModalRegistrarPresenca v-if="modalAtivo">
+        <img src="svg/x.svg" class="button-fechar" alt="Fechar" @click="modalAtivo = false" />
+      </ModalRegistrarPresenca>
       <form>
         <div class="form-item identificacao">
           <label for="identificacao">Identificação:</label>
@@ -20,7 +23,7 @@
           <label for="identificacao">Data de nascimento:</label>
           <input type="date" id="identificacao" autofocus />
         </div>
-        <button id="btn-cadastrar_usuario">Consultar</button>
+        <button class="button-large" @click="modalAtivo = true">Consultar</button>
       </form>
     </template>
   </PageArea>
@@ -28,9 +31,17 @@
 
 <script>
 import PageArea from '../layouts/PageArea.vue';
+import ModalRegistrarPresenca from '../layouts/Modals/ModalRegistrarPresenca.vue';
+
 export default {
+  data() {
+    return {
+      modalAtivo: false,
+    };
+  },
   components: {
     PageArea,
+    ModalRegistrarPresenca,
   },
 };
 </script>

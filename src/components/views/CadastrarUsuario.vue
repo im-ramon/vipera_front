@@ -29,7 +29,7 @@
             <option value="e">Especial</option>
           </select>
         </div>
-        <button id="btn-cadastrar_usuario">Cadastrar</button>
+        <button class="button-large">Cadastrar</button>
       </form>
     </template>
   </PageArea>

@@ -1,9 +1,8 @@
 <template>
   <div id="modal_consulta">
-    <div id="registro-area">
+    <div id="modal-area">
       <slot></slot>
       <h1 class="titulo">Solicitar refeição</h1>
-
       <form>
         <div class="form-item">
           <label for="nome_usuario">Nome completo:</label>
@@ -19,40 +18,44 @@
         <div class="form-item">
           <label for="data_de_nascimento">Data de nascimento:</label>
           <input type="date" id="data_de_nascimento" disabled />
+          <span id="idade">Idade: <strong>20 anos</strong></span>
         </div>
 
         <div class="form-item">
-          <label for="data_refeicao">Data da refeição:</label>
-          <input type="date" id="data_refeicao" />
+          <label for="data_consulta">Data da consulta:</label>
+          <input type="date" id="data_consulta" disabled />
+        </div>
+
+        <div class="form-item">
+          <label for="horario_refeicao">Horário da refeição:</label>
+          <input type="text" id="horario_refeicao" disabled />
         </div>
 
         <div class="form-item">
           <label for="tipo_de_refeicao">Tipo de refeição:</label>
-          <select name="" id="">
-            <option value="n">Comum</option>
-            <option value="a">Pessoal de Apoio</option>
-            <option value="1">Criança até 1 ano</option>
-            <option value="12">Criança de 1 a 12 anos</option>
-            <option value="i">Indígena</option>
-            <option value="e">Especial</option>
-          </select>
+          <input type="text" id="tipo_de_refeicao" disabled />
         </div>
         <div class="form-item">
           <fieldset>
             <legend>Horário solicitados</legend>
-            <input type="checkbox" id="cafe" />
-            <label for="cafe">Café da manhã</label>
+            <div class="form-sub_item">
+              <input type="checkbox" id="cafe" disabled />
+              <label for="cafe">Café da manhã</label>
+            </div>
 
-            <input type="checkbox" id="almoco" />
-            <label for="almoco">Almoço</label>
+            <div class="form-sub_item">
+              <input type="checkbox" id="almoco" disabled />
+              <label for="almoco">Almoço</label>
+            </div>
 
-            <input type="checkbox" id="janta" />
-            <label for="janta">Janta</label>
+            <div class="form-sub_item">
+              <input type="checkbox" id="janta" disabled />
+              <label for="janta">Janta</label>
+            </div>
           </fieldset>
         </div>
+        <button class="button-large">Registrar presença</button>
       </form>
-
-      <button id="btn-cadastrar_usuario">Registrar solicitação</button>
     </div>
   </div>
 </template>

@@ -54,6 +54,7 @@ header {
     }
     .calendar {
         display: flex;
+        border: 1px solid $cinza_transparente25;
         justify-content: center;
         align-items: center;
         margin-right: 7px;
@@ -125,7 +126,7 @@ aside {
     width: 260px;
     display: grid;
     grid-template-rows: 1fr 8fr 1fr;
-    border-right: 2px solid $cinza_transparente25;
+    border-right: 1px solid $cinza_transparente25;
     z-index: 2;
 
     #logo {
@@ -225,10 +226,14 @@ main {
         justify-content: center;
     }
 
+    #area_conteudo {
+        padding: 0 12px;
+    }
+
     .page_area {
         background: $branco;
         width: 100%;
-        border: 2px solid $cinza_transparente25;
+        border: 1px solid $cinza_transparente25;
         height: 100%;
         border-radius: $borderRadius;
         padding: 10px 2em;
@@ -241,7 +246,6 @@ main {
 
         form {
             width: 66%;
-            padding-left: 12px;
 
             .form-item {
                 width: 100%;
@@ -258,34 +262,7 @@ main {
                         width: 20px;
                     }
                 }
-
-                #cafe {
-                    margin: 1px 4px 1px 0px;
-                }
-
-                #almoco,
-                #janta {
-                    margin: 1px 4px 1px 30px;
-                }
-
-                fieldset {
-                    width: 100%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    padding: 0.8em 0.3em;
-                    border-radius: $borderRadius;
-                }
             }
-        }
-
-        #btn-cadastrar_usuario {
-            border-radius: $borderRadius;
-            background: rgb(156, 255, 161);
-            border: none;
-            font-size: 16px;
-            margin: 1em 0;
-            padding: 0.5em 1.7em;
         }
     }
 }
@@ -297,74 +274,93 @@ main {
     width: 100%;
     height: 100%;
     background: #14141490;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(3px);
 }
 
-#registro-area {
+#modal-area {
     position: relative;
+    width: 34%;
+    background: $branco;
+    border: 1px solid $cinza_transparente25;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: $borderRadius;
+    box-sizing: content-box;
+    padding: 10px 24px;
 
-    .btn_fechar {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 30px;
+    form {
+        width: 100%;
+
+        fieldset {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1em;
+
+            .form-sub_item {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                input {
+                    flex: none;
+                    margin-right: 7px;
+                }
+            }
+        }
+    }
+
+    #idade {
+        margin-left: 1em;
     }
 }
 
-#registro-area,
-#estisticas-area,
-#consulta-area {
-    background: rgb(93, 93, 255);
-    border-radius: $borderRadius;
-    width: 90%;
-    max-width: 450px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 1em 1.7em;
+.button-fechar {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 30px;
+    background: $branco;
+    box-sizing: content-box;
+    border-radius: 100%;
+    padding: 2px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 22px;
+    cursor: pointer;
 }
 
-#estisticas-area {
-    width: 90%;
-    max-width: 1200px;
+#estisticas-container {
+    width: 100%;
+    border-radius: $borderRadius;
+    padding: 0.5em 1em;
+    display: grid;
+    gap: 1em;
+    grid-template-columns: repeat(2, 1fr);
+    background: rgb(235, 255, 53);
 
-    #estisticas-container {
-        width: 100%;
+    #estisticas_hoje,
+    #estisticas_amanha {
         border-radius: $borderRadius;
-        padding: 0.5em 1em;
-        display: grid;
-        gap: 1em;
-        grid-template-columns: repeat(2, 1fr);
-        background: rgb(235, 255, 53);
+        text-align: center;
+        background: antiquewhite;
 
-        #estisticas_hoje,
-        #estisticas_amanha {
-            border-radius: $borderRadius;
-            text-align: center;
-            background: antiquewhite;
+        .estisticas-tabela {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(8, 1fr);
 
-            .estisticas-tabela {
-                display: grid;
-                grid-template-columns: repeat(5, 1fr);
-                grid-template-rows: repeat(8, 1fr);
+            span {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                border: 1px solid #00000050;
+            }
 
-                span {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    text-align: center;
-                    border: 1px solid #00000050;
-                }
-
-                .estisticas-tabela-cabecalho {
-                    font-weight: bold;
-                    background: #e1e1e1;
-                }
+            .estisticas-tabela-cabecalho {
+                font-weight: bold;
+                background: #e1e1e1;
             }
         }
     }
@@ -390,12 +386,16 @@ select {
     flex: 1;
     margin-left: 10px;
     background: $branco;
-    border: 2px solid $cinza_transparente50;
+    border: 1px solid $cinza_transparente50;
     border-radius: 16px;
     outline: none;
     box-sizing: content-box;
     height: 22px;
     padding: 0 10px 0 1em;
+
+    &:disabled {
+        background: #e1e1e1;
+    }
 }
 
 input[type="date"],
@@ -403,7 +403,41 @@ select {
     flex: none;
 }
 
+fieldset {
+    border: 1px solid $cinza_transparente25;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8em 0.3em;
+    legend {
+        background: $background_cinza;
+        padding: 4px 16px;
+        border: 1px solid $cinza_transparente25;
+        border-radius: $borderRadius;
+    }
+}
+
 // ESTILOS PADRONIZADOS
+.button-large {
+    border-radius: $borderRadius;
+    border: 1px solid $cinza_transparente50;
+    font-size: 16px;
+    background-color: #85ffbd;
+    background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+    margin: 1em 0;
+    padding: 0.5em 1.7em;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale(1.1);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 20px;
+        transition: all 0.3s ease-in-out;
+    }
+}
+
 .bg-primary {
     background: #007aff !important;
 }

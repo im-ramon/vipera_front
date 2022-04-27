@@ -1,11 +1,10 @@
 <template>
-  <ModalSolicitarRefeicao v-if="modal">
-    <img src="svg/x.svg" alt="barcode" class="btn_fechar" @click="modal = false" />
-  </ModalSolicitarRefeicao>
-
   <PageArea>
     <template v-slot:titulo> Solicitar refeição </template>
     <template v-slot:body>
+      <ModalSolicitarRefeicao v-if="modalAtivo">
+        <img src="svg/x.svg" alt="barcode" class="button-fechar" @click="modalAtivo = false" />
+      </ModalSolicitarRefeicao>
       <form>
         <div class="form-item identificacao">
           <label for="identificacao">Identificação:</label>
@@ -24,7 +23,7 @@
           <label for="identificacao">Data de nascimento:</label>
           <input type="date" id="identificacao" autofocus />
         </div>
-        <button id="btn-cadastrar_usuario" @click="modal = true">Consultar</button>
+        <button class="button-large" @click="modalAtivo = true">Consultar</button>
       </form>
     </template>
   </PageArea>
@@ -42,7 +41,7 @@ export default {
   },
   data() {
     return {
-      modal: false,
+      modalAtivo: false,
     };
   },
 };

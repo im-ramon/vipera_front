@@ -50,6 +50,7 @@ header .calendar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border: 1px solid #79797925;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -149,7 +150,7 @@ aside {
   display: grid;
   -ms-grid-rows: 1fr 8fr 1fr;
       grid-template-rows: 1fr 8fr 1fr;
-  border-right: 2px solid #79797925;
+  border-right: 1px solid #79797925;
   z-index: 2;
 }
 
@@ -286,10 +287,14 @@ main #root {
           justify-content: center;
 }
 
+main #area_conteudo {
+  padding: 0 12px;
+}
+
 main .page_area {
   background: #ffffff;
   width: 100%;
-  border: 2px solid #79797925;
+  border: 1px solid #79797925;
   height: 100%;
   border-radius: 16px;
   padding: 10px 2em;
@@ -303,7 +308,6 @@ main .page_area h1.titulo {
 
 main .page_area form {
   width: 66%;
-  padding-left: 12px;
 }
 
 main .page_area form .form-item {
@@ -327,39 +331,6 @@ main .page_area form .form-item.identificacao img {
   width: 20px;
 }
 
-main .page_area form .form-item #cafe {
-  margin: 1px 4px 1px 0px;
-}
-
-main .page_area form .form-item #almoco,
-main .page_area form .form-item #janta {
-  margin: 1px 4px 1px 30px;
-}
-
-main .page_area form .form-item fieldset {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0.8em 0.3em;
-  border-radius: 16px;
-}
-
-main .page_area #btn-cadastrar_usuario {
-  border-radius: 16px;
-  background: #9cffa1;
-  border: none;
-  font-size: 16px;
-  margin: 1em 0;
-  padding: 0.5em 1.7em;
-}
-
 #modal_consulta {
   position: fixed;
   top: 0;
@@ -367,7 +338,7 @@ main .page_area #btn-cadastrar_usuario {
   width: 100%;
   height: 100%;
   background: #14141490;
-  z-index: 1;
+  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -381,46 +352,70 @@ main .page_area #btn-cadastrar_usuario {
           backdrop-filter: blur(3px);
 }
 
-#registro-area {
+#modal-area {
   position: relative;
-}
-
-#registro-area .btn_fechar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 30px;
-}
-
-#registro-area,
-#estisticas-area,
-#consulta-area {
-  background: #5d5dff;
+  width: 34%;
+  background: #ffffff;
+  border: 1px solid #79797925;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 16px;
-  width: 90%;
-  max-width: 450px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  padding: 10px 24px;
+}
+
+#modal-area form {
+  width: 100%;
+}
+
+#modal-area form fieldset {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+
+#modal-area form fieldset .form-sub_item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 1em 1.7em;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
-#estisticas-area {
-  width: 90%;
-  max-width: 1200px;
+#modal-area form fieldset .form-sub_item input {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  margin-right: 7px;
 }
 
-#estisticas-area #estisticas-container {
+#modal-area #idade {
+  margin-left: 1em;
+}
+
+.button-fechar {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 30px;
+  background: #ffffff;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  border-radius: 100%;
+  padding: 2px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 22px;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 22px;
+  cursor: pointer;
+}
+
+#estisticas-container {
   width: 100%;
   border-radius: 16px;
   padding: 0.5em 1em;
@@ -432,15 +427,15 @@ main .page_area #btn-cadastrar_usuario {
   background: #ebff35;
 }
 
-#estisticas-area #estisticas-container #estisticas_hoje,
-#estisticas-area #estisticas-container #estisticas_amanha {
+#estisticas-container #estisticas_hoje,
+#estisticas-container #estisticas_amanha {
   border-radius: 16px;
   text-align: center;
   background: antiquewhite;
 }
 
-#estisticas-area #estisticas-container #estisticas_hoje .estisticas-tabela,
-#estisticas-area #estisticas-container #estisticas_amanha .estisticas-tabela {
+#estisticas-container #estisticas_hoje .estisticas-tabela,
+#estisticas-container #estisticas_amanha .estisticas-tabela {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[5];
@@ -449,8 +444,8 @@ main .page_area #btn-cadastrar_usuario {
       grid-template-rows: repeat(8, 1fr);
 }
 
-#estisticas-area #estisticas-container #estisticas_hoje .estisticas-tabela span,
-#estisticas-area #estisticas-container #estisticas_amanha .estisticas-tabela span {
+#estisticas-container #estisticas_hoje .estisticas-tabela span,
+#estisticas-container #estisticas_amanha .estisticas-tabela span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -464,8 +459,8 @@ main .page_area #btn-cadastrar_usuario {
   border: 1px solid #00000050;
 }
 
-#estisticas-area #estisticas-container #estisticas_hoje .estisticas-tabela .estisticas-tabela-cabecalho,
-#estisticas-area #estisticas-container #estisticas_amanha .estisticas-tabela .estisticas-tabela-cabecalho {
+#estisticas-container #estisticas_hoje .estisticas-tabela .estisticas-tabela-cabecalho,
+#estisticas-container #estisticas_amanha .estisticas-tabela .estisticas-tabela-cabecalho {
   font-weight: bold;
   background: #e1e1e1;
 }
@@ -497,7 +492,7 @@ select {
           flex: 1;
   margin-left: 10px;
   background: #ffffff;
-  border: 2px solid #79797950;
+  border: 1px solid #79797950;
   border-radius: 16px;
   outline: none;
   -webkit-box-sizing: content-box;
@@ -506,11 +501,62 @@ select {
   padding: 0 10px 0 1em;
 }
 
+input:disabled,
+select:disabled {
+  background: #e1e1e1;
+}
+
 input[type="date"],
 select {
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;
+}
+
+fieldset {
+  border: 1px solid #79797925;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.8em 0.3em;
+}
+
+fieldset legend {
+  background: #f8f8f8;
+  padding: 4px 16px;
+  border: 1px solid #79797925;
+  border-radius: 16px;
+}
+
+.button-large {
+  border-radius: 16px;
+  border: 1px solid #79797950;
+  font-size: 16px;
+  background-color: #85ffbd;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+  margin: 1em 0;
+  padding: 0.5em 1.7em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.button-large:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 20px;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .bg-primary {

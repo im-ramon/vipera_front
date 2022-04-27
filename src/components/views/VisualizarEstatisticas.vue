@@ -108,7 +108,7 @@
           </div>
         </div>
       </div>
-      <button id="btn-cadastrar_usuario">Atualizar estatísticas</button>
+      <button class="button-large">Atualizar estatísticas</button>
     </template>
   </PageArea>
 </template>

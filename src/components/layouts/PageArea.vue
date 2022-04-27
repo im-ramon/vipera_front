@@ -3,7 +3,9 @@
     <h1 class="titulo">
       <slot name="titulo"></slot>
     </h1>
-    <slot name="body"></slot>
+    <section id="area_conteudo">
+      <slot name="body"></slot>
+    </section>
   </div>
 </template>
 
