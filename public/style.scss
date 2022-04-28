@@ -37,7 +37,7 @@ body {
     height: 100%;
     display: grid;
     grid-template-columns: 250px 1fr;
-    gap: 1em;
+    // gap: 1em;
 }
 
 header {
@@ -121,12 +121,19 @@ header {
     }
 }
 
+@keyframes logoBackground {
+    100% {
+        background-position: 400% 0;
+    }
+}
+
 aside {
     background: $branco;
     border-right: 1px solid $cinza_transparente25;
     display: grid;
     grid-template-rows: 1fr 8fr 1fr;
-    width: 260px;
+    width: 250px;
+    user-select: none;
     z-index: 2;
 
     #logo {
@@ -137,6 +144,8 @@ aside {
         #logo_area {
             align-items: center;
             background-image: linear-gradient(275deg, #85ffbd 0%, #fffb7d 100%);
+            background-size: 300%;
+            background-position: 303% 0;
             border-radius: $borderRadius;
             border: 1px solid $cinza_transparente25;
             display: flex;
@@ -145,6 +154,8 @@ aside {
             margin-top: 1em;
             padding: 1em 2em;
             user-select: none;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            animation: logoBackground 3s ease-in-out alternate-reverse infinite;
         }
 
         img {
@@ -508,6 +519,12 @@ fieldset {
 }
 
 // ESTILOS PADRONIZADOS
+.button_area {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
 .button-large {
     border-radius: $borderRadius;
     border: 1px solid $cinza_transparente50;
@@ -525,6 +542,12 @@ fieldset {
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 20px;
         transition: all 0.3s ease-in-out;
     }
+}
+
+.button-large-delete {
+    background-color: #ffe53b;
+    background-image: linear-gradient(147deg, #ffe53b 0%, #ff2525 74%);
+    border: 1px solid #bdbdbd;
 }
 
 .bg-primary {

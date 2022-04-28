@@ -27,9 +27,9 @@
         <img src="/svg/clipboard.svg" alt="Solicitações de refeição" />
         <span>Solicitar refeição</span>
       </router-link>
-      <router-link to="/visualizarestatisticas" class="links-item">
-        <img src="/svg/chart-bar.svg" alt="Estatísticas" />
-        <span>Estatísticas</span>
+      <router-link to="/visualizarrelatorios" class="links-item">
+        <img src="/svg/chart-bar.svg" alt="Relatórios" />
+        <span>Relatórios</span>
       </router-link>
     </div>
     <div id="app_version">

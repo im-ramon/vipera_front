@@ -21,7 +21,6 @@ body {
   display: grid;
   -ms-grid-columns: 250px 1fr;
       grid-template-columns: 250px 1fr;
-  gap: 1em;
 }
 
 header {
@@ -143,6 +142,18 @@ header nav img {
   cursor: pointer;
 }
 
+@-webkit-keyframes logoBackground {
+  100% {
+    background-position: 400% 0;
+  }
+}
+
+@keyframes logoBackground {
+  100% {
+    background-position: 400% 0;
+  }
+}
+
 aside {
   background: #ffffff;
   border-right: 1px solid #79797925;
@@ -150,7 +161,11 @@ aside {
   display: grid;
   -ms-grid-rows: 1fr 8fr 1fr;
       grid-template-rows: 1fr 8fr 1fr;
-  width: 260px;
+  width: 250px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   z-index: 2;
 }
 
@@ -171,6 +186,8 @@ aside #logo #logo_area {
       -ms-flex-align: center;
           align-items: center;
   background-image: linear-gradient(275deg, #85ffbd 0%, #fffb7d 100%);
+  background-size: 300%;
+  background-position: 303% 0;
   border-radius: 16px;
   border: 1px solid #79797925;
   display: -webkit-box;
@@ -186,6 +203,9 @@ aside #logo #logo_area {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  animation: logoBackground 3s ease-in-out alternate-reverse infinite;
 }
 
 aside #logo img {
@@ -712,6 +732,15 @@ fieldset legend {
   border-radius: 16px;
 }
 
+.button_area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
 .button-large {
   border-radius: 16px;
   border: 1px solid #79797950;
@@ -734,6 +763,12 @@ fieldset legend {
           box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 20px;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+}
+
+.button-large-delete {
+  background-color: #ffe53b;
+  background-image: linear-gradient(147deg, #ffe53b 0%, #ff2525 74%);
+  border: 1px solid #bdbdbd;
 }
 
 .bg-primary {

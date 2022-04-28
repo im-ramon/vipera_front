@@ -22,13 +22,8 @@
         </div>
 
         <div class="form-item">
-          <label for="data_consulta">Data da consulta:</label>
-          <input type="date" id="data_consulta" disabled />
-        </div>
-
-        <div class="form-item">
-          <label for="horario_refeicao">Horário da refeição:</label>
-          <input type="text" id="horario_refeicao" disabled />
+          <label for="data_consulta">Data da refeição:</label>
+          <input type="date" id="data_consulta" />
         </div>
 
         <div class="form-item">
@@ -39,17 +34,17 @@
           <fieldset>
             <legend>Horário solicitados</legend>
             <div class="form-sub_item">
-              <input type="checkbox" id="cafe" disabled />
+              <input type="checkbox" id="cafe" />
               <label for="cafe">Café da manhã</label>
             </div>
 
             <div class="form-sub_item">
-              <input type="checkbox" id="almoco" disabled />
+              <input type="checkbox" id="almoco" />
               <label for="almoco">Almoço</label>
             </div>
 
             <div class="form-sub_item">
-              <input type="checkbox" id="janta" disabled />
+              <input type="checkbox" id="janta" />
               <label for="janta">Janta</label>
             </div>
           </fieldset>

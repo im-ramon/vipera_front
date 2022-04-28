@@ -1,6 +1,6 @@
 <template>
   <PageArea>
-    <template v-slot:titulo> Estatísticas </template>
+    <template v-slot:titulo> Relatórios </template>
     <template v-slot:body>
       <div id="estisticas-container">
         <div id="estisticas_hoje">
@@ -108,7 +108,7 @@
           </div>
         </div>
       </div>
-      <button class="button-large">Atualizar estatísticas</button>
+      <button class="button-large">Atualizar relatórios</button>
     </template>
   </PageArea>
 </template>

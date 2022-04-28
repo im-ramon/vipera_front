@@ -1,7 +1,8 @@
 <template>
-  <PageArea>
-    <template v-slot:titulo> Cadastrar usuário </template>
-    <template v-slot:body>
+  <div id="modal_consulta">
+    <div id="modal-area">
+      <slot></slot>
+      <h1 class="titulo">Gerenciar usuário</h1>
       <form>
         <div class="form-item">
           <label for="nome_usuario">Nome completo:</label>
@@ -17,7 +18,9 @@
         <div class="form-item">
           <label for="data_de_nascimento">Data de nascimento:</label>
           <input type="date" id="data_de_nascimento" />
+          <span id="idade">Idade: <strong>___ ano(s)</strong></span>
         </div>
+
         <div class="form-item">
           <label for="tipo_de_refeicao">Classificação:</label>
           <select name="tipo_de_refeicao" id="tipo_de_refeicao">
@@ -29,17 +32,24 @@
             <option value="e">Especial</option>
           </select>
         </div>
-        <button v-on:click.prevent class="button-large">Cadastrar</button>
+        <div class="button_area">
+          <button v-on:click.prevent class="button-large">Salvar dados</button>
+          <button v-on:click.prevent="excluirUsuario('Id do usuário', 'Nome do usuário')" class="button-large button-large-delete">Excluir usuário</button>
+        </div>
       </form>
-    </template>
-  </PageArea>
+    </div>
+  </div>
 </template>
 
 <script>
-import PageArea from '../layouts/PageArea.vue';
 export default {
-  components: {
-    PageArea,
+  methods: {
+    excluirUsuario(id, nome) {
+      let confirm = window.confirm(`Você irá excluir o usuário ${nome} PERMANENTEMENTE do banco de dados.\n\nRealmente deseja continuar?`);
+      if (confirm) {
+        alert(`Implementar lógica aqui para excluir o Id: ${id}`);
+      }
+    },
   },
 };
 </script>

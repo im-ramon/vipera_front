@@ -7,7 +7,7 @@ import CadastrarUsuario from '@/components/views/CadastrarUsuario.vue'
 import GerenciarUsuario from '@/components/views/GerenciarUsuario.vue'
 import SolicitarRefeicao from '@/components/views/SolicitarRefeicao.vue'
 import RegistrarPresenca from '@/components/views/RegistrarPresenca.vue'
-import VisualizarEstatisticas from '@/components/views/VisualizarEstatisticas.vue'
+import VisualizarRelatorios from '@/components/views/VisualizarRelatorios.vue'
 import IndexHome from '@/components/views/IndexHome.vue'
 
 
@@ -16,7 +16,7 @@ const routes = [
     { path: '/cadastrarusuario', component: CadastrarUsuario },
     { path: '/solicitarrefeicao', component: SolicitarRefeicao },
     { path: '/registrarpresenca', component: RegistrarPresenca },
-    { path: '/visualizarestatisticas', component: VisualizarEstatisticas },
+    { path: '/visualizarrelatorios', component: VisualizarRelatorios },
     { path: '/gerenciarusuario', component: GerenciarUsuario },
 ]
 

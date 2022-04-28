@@ -23,7 +23,7 @@
           <label for="identificacao">Data de nascimento:</label>
           <input type="date" id="identificacao" autofocus />
         </div>
-        <button class="button-large" @click="modalAtivo = true">Consultar</button>
+        <button class="button-large" v-on:click.prevent="modalAtivo = true">Consultar</button>
       </form>
     </template>
   </PageArea>
