@@ -1,6 +1,6 @@
 <template>
   <PageArea>
-    <template v-slot:titulo> Dashboard </template>
+    <template v-slot:titulo> Dashboard {{ $store.state.count }} </template>
     <template v-slot:body>
       <div id="graficos">
         <div id="grafico-1" class="grafico-item">
