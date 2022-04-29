@@ -10,16 +10,16 @@ export default {
   data() {
     return {
       tipoUsuarioData: {
-        type: 'pie',
+        type: 'doughnut',
         data: {
-          labels: ['Comum', 'Apoio', 'Indígena', 'Especial'],
+          labels: ['Comum', 'Apoio', 'Indígena', 'Especial', 'Extra'],
           datasets: [
             {
               label: 'Quantidade de refeições solicitadas',
-              data: [400, 500, 330, 219],
-              backgroundColor: ['#319957', '#fffb00', '#1a518e', '#353a40'],
+              data: [500, 400, 310, 219, 60],
+              backgroundColor: ['#31995799', '#fffb0099', '#1a518e99', '#353a4099', '#ff000099'],
               borderColor: '#12121250',
-              borderWidth: 2,
+              borderWidth: 1,
             },
           ],
         },
