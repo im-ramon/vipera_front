@@ -2,8 +2,8 @@
   <aside>
     <div id="logo">
       <div id="logo_area">
-        <img src="svg/e.svg" alt="Logo 'E'" />
-        <span>e-numer</span>
+        <img src="logo.png" alt="Logo 'E'" />
+        <span>Vipera</span>
       </div>
     </div>
     <div id="links">
@@ -33,10 +33,14 @@
       </router-link>
     </div>
     <div id="app_version">
+      <!-- <img id="dev-logo" src="@/assets/logo-black.png" alt="Logo Pequen" /> -->
       <div id="app_version_area">
-        <p>Web App <strong>Enumer</strong></p>
+        <p>Web App <strong>Vipera</strong></p>
         <p>Todos os direitos reservados © {{ anoAtual }}</p>
-        <p>Versão 1.0.1 | Alpha</p>
+        <p id="dev">
+          Desenvolvido por
+          <a href="https://api.whatsapp.com/send?phone=+5575991357677&text=Olá%20,%20Ramon@" target="_BLANK" title="Entrar em contato pelo Whatsapp"> <strong>Ramon Oliveira</strong></a>
+        </p>
       </div>
     </div>
   </aside>

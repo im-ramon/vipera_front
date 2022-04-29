@@ -1,9 +1,10 @@
 // FONTES
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
 
 // VARIÁVEIS
-
-// Cores
+// CORES
 $background_cinza: #f8f8f8;
 $cinza_claro: #f7f7f7;
 $cinza_transparente25: #79797925;
@@ -15,8 +16,21 @@ $amarelo: #fffb00;
 $azul: #1a518e;
 $branco: #ffffff;
 
-// Valores padrões
+// VALORES PADRÕES
 $borderRadius: 16px;
+
+//KEYFRAMES
+@keyframes logoBackground {
+    100% {
+        background-position: 400% 0;
+    }
+}
+
+@keyframes backgroundDev {
+    100% {
+        background-position: 80px 0px;
+    }
+}
 
 * {
     margin: 0;
@@ -112,18 +126,24 @@ header {
                     transition: all 0.3s ease-out;
                 }
             }
+
+            #version {
+                border-top: 1px solid $cinza_transparente25;
+                color: #00000050;
+                cursor: default;
+                font-size: 10px;
+                margin-top: 1em;
+                padding-top: 10px;
+                text-align: center;
+                user-select: none;
+                width: 100%;
+            }
         }
 
         img {
             width: 25px;
             cursor: pointer;
         }
-    }
-}
-
-@keyframes logoBackground {
-    100% {
-        background-position: 400% 0;
     }
 }
 
@@ -143,19 +163,19 @@ aside {
 
         #logo_area {
             align-items: center;
+            animation: logoBackground 3s ease-in-out alternate-reverse infinite;
             background-image: linear-gradient(275deg, #85ffbd 0%, #fffb7d 100%);
-            background-size: 300%;
             background-position: 303% 0;
+            background-size: 300%;
             border-radius: $borderRadius;
             border: 1px solid $cinza_transparente25;
+            box-shadow: inset rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
             display: flex;
             height: 50px;
             justify-content: center;
             margin-top: 1em;
             padding: 1em 2em;
             user-select: none;
-            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-            animation: logoBackground 3s ease-in-out alternate-reverse infinite;
         }
 
         img {
@@ -166,8 +186,9 @@ aside {
         }
 
         span {
-            font-size: 22px;
+            font-size: 25px;
             margin-left: 7px;
+            font-family: "Lobster", cursive;
         }
     }
 
@@ -226,9 +247,46 @@ aside {
     #app_version {
         user-select: none;
         display: flex;
-        align-items: flex-end;
-        justify-content: center;
+        align-items: center;
+        justify-content: flex-end;
         padding-bottom: 1em;
+        flex-direction: column;
+
+        #dev-logo {
+            width: 22px;
+            opacity: 33%;
+            transition: opacity 0.3s ease-out;
+
+            &:hover {
+                transition: opacity 0.3s ease-out;
+                opacity: 77%;
+            }
+        }
+
+        #app_version_area {
+            width: 100%;
+        }
+
+        #dev {
+            a {
+                color: #8b8b8b8f;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: -80px 0px;
+                border-radius: 4px;
+
+                &:hover {
+                    text-decoration: none;
+                    color: #5a5a5a8f;
+                    transition: all 0.3s ease;
+                    animation: backgroundDev 0.5s ease-out infinite;
+                }
+            }
+        }
+
         p {
             width: 100%;
             text-align: center;

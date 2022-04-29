@@ -1,4 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+@-webkit-keyframes logoBackground {
+  100% {
+    background-position: 400% 0;
+  }
+}
+@keyframes logoBackground {
+  100% {
+    background-position: 400% 0;
+  }
+}
+
+@-webkit-keyframes backgroundDev {
+  100% {
+    background-position: 80px 0px;
+  }
+}
+
+@keyframes backgroundDev {
+  100% {
+    background-position: 80px 0px;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -137,21 +162,24 @@ header nav #nav-itens a:hover {
   transition: all 0.3s ease-out;
 }
 
+header nav #nav-itens #version {
+  border-top: 1px solid #79797925;
+  color: #00000050;
+  cursor: default;
+  font-size: 10px;
+  margin-top: 1em;
+  padding-top: 10px;
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  width: 100%;
+}
+
 header nav img {
   width: 25px;
   cursor: pointer;
-}
-
-@-webkit-keyframes logoBackground {
-  100% {
-    background-position: 400% 0;
-  }
-}
-
-@keyframes logoBackground {
-  100% {
-    background-position: 400% 0;
-  }
 }
 
 aside {
@@ -185,11 +213,14 @@ aside #logo #logo_area {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  animation: logoBackground 3s ease-in-out alternate-reverse infinite;
   background-image: linear-gradient(275deg, #85ffbd 0%, #fffb7d 100%);
-  background-size: 300%;
   background-position: 303% 0;
+  background-size: 300%;
   border-radius: 16px;
   border: 1px solid #79797925;
+  -webkit-box-shadow: inset rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          box-shadow: inset rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -203,9 +234,6 @@ aside #logo #logo_area {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  animation: logoBackground 3s ease-in-out alternate-reverse infinite;
 }
 
 aside #logo img {
@@ -217,8 +245,9 @@ aside #logo img {
 }
 
 aside #logo span {
-  font-size: 22px;
+  font-size: 25px;
   margin-left: 7px;
+  font-family: "Lobster", cursive;
 }
 
 aside #links {
@@ -298,13 +327,55 @@ aside #app_version {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   padding-bottom: 1em;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+aside #app_version #dev-logo {
+  width: 22px;
+  opacity: 33%;
+  -webkit-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+}
+
+aside #app_version #dev-logo:hover {
+  -webkit-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+  opacity: 77%;
+}
+
+aside #app_version #app_version_area {
+  width: 100%;
+}
+
+aside #app_version #dev a {
+  color: #8b8b8b8f;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: -80px 0px;
+  border-radius: 4px;
+}
+
+aside #app_version #dev a:hover {
+  text-decoration: none;
+  color: #5a5a5a8f;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-animation: backgroundDev 0.5s ease-out infinite;
+          animation: backgroundDev 0.5s ease-out infinite;
 }
 
 aside #app_version p {

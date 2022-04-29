@@ -18,6 +18,8 @@
         <a href="#">Ajuda</a>
         <a href="#">Meu perfil</a>
         <a href="#" class="bg-danger-soft">Sair</a>
+        <hr />
+        <span id="version">Versão 1.1.0 | Alpha</span>
       </div>
     </nav>
   </header>
