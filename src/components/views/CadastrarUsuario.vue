@@ -132,15 +132,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-  transform: translate(50%, -5em);
-}
-</style>
+<style></style>

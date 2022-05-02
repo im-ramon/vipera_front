@@ -51,6 +51,12 @@ export default {
       }
     },
   },
+  props: {
+    teste: {
+      required: false,
+      default: 'Lucas',
+    },
+  },
 };
 </script>
 

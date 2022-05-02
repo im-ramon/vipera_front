@@ -927,4 +927,17 @@ fieldset legend {
 .bg-info-soft {
   background: #17a2b730 !important;
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  -webkit-transform: translate(50%, -5em);
+          transform: translate(50%, -5em);
+}
 /*# sourceMappingURL=style.css.map */
