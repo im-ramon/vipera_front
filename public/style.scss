@@ -5,6 +5,8 @@
 
 // VARIÁVEIS
 // CORES
+$gradiente_verde: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+$gradiente_vermelho: linear-gradient(147deg, #ffe53b 0%, #ff2525 74%);
 $background_cinza: #f8f8f8;
 $cinza_claro: #f7f7f7;
 $cinza_transparente25: #79797925;
@@ -15,6 +17,12 @@ $verde: #319957;
 $amarelo: #fffb00;
 $azul: #1a518e;
 $branco: #ffffff;
+$primary: #007aff;
+$secondary: #6c757e;
+$success: #27a844;
+$danger: #dc3546;
+$warning: #fec107;
+$info: #17a2b7;
 
 // VALORES PADRÕES
 $borderRadius: 16px;
@@ -576,11 +584,45 @@ fieldset {
     }
 }
 
+.modal_confirmacao {
+    position: fixed;
+    top: 2em;
+    right: 50%;
+    transform: translateX(50%);
+    background: $gradiente_verde;
+    // border: 2px solid $cinza_transparente25;
+    border-radius: $borderRadius;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 12px;
+
+    .modal_confirmacao-container {
+        padding: 1em 1.7em;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+}
+
 // ESTILOS PADRONIZADOS
 .button_area {
     display: flex;
     width: 100%;
     justify-content: space-around;
+}
+
+.button_text {
+    position: relative;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.button_loading {
+    width: 25px;
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
 }
 
 .button-large {
@@ -591,6 +633,8 @@ fieldset {
     background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
     margin: 1em 0;
     padding: 0.5em 1.7em;
+    // display: flex;
+    // justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -626,7 +670,7 @@ fieldset {
     background: #27a844 !important;
 }
 .bg-success-soft {
-    background: #27a84430 !important;
+    background: #74ff7291 !important;
 }
 
 .bg-danger {

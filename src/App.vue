@@ -3,6 +3,13 @@
   <main>
     <HeaderComponent></HeaderComponent>
     <section id="root">
+      <!-- <router-view v-slot="{ Component }">
+        <transition name="home">
+          <component :is="Component" />
+        </transition>
+      </router-view> -->
+      <!-- <transition name="home"> -->
+      <!-- </transition> -->
       <router-view></router-view>
     </section>
     <FooterComponent></FooterComponent>
@@ -24,4 +31,28 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+@keyframes show {
+  0% {
+    opacity: 0;
+    /* transform: translateX(-6em); */
+  }
+
+  100% {
+    opacity: 1;
+    /* transform: translateX(0); */
+  }
+}
+
+.home-enter-active {
+  animation-name: show;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+}
+.home-leave-active {
+  animation-name: show;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-direction: reverse;
+}
+</style>
