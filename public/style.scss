@@ -587,9 +587,9 @@ fieldset {
 .modal_confirmacao {
     position: fixed;
     top: 2em;
+    z-index: 10;
     right: 50%;
     transform: translateX(50%);
-    background: $gradiente_verde;
     // border: 2px solid $cinza_transparente25;
     border-radius: $borderRadius;
     display: flex;
@@ -704,4 +704,16 @@ fieldset {
 .fade-leave-to {
     opacity: 0;
     transform: translate(50%, -5em);
+}
+
+.background_error {
+    background-image: linear-gradient(to left, #ff5a5a, #ff0505);
+}
+
+.background_success {
+    background-image: $gradiente_verde;
+}
+
+.background_warning {
+    background-image: linear-gradient(62deg, #fff600 0%, #ff9b00 100%);
 }

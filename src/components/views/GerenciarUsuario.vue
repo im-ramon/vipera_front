@@ -3,10 +3,10 @@
     <template v-slot:titulo> Gerenciar usuário </template>
     <template v-slot:body>
       <transition name="fade">
-        <ModalConfirmacao v-if="modalConfirmacaoAtivo">
+        <ModalConfirmacao v-if="modalConfirmacaoAtivo" :backgourndModal="backgourndModal">
           <img src="svg/x.svg" @click="modalConfirmacaoAtivo = false" class="button-fechar" alt="Fechar" />
-          <h3>Tudo certo por aqui!</h3>
-          <p>Os dados do usuário foram atualziados com sucesso!</p>
+          <h3>{{ modal_titulo }}</h3>
+          <p>{{ modal_conteudo }}</p>
         </ModalConfirmacao>
       </transition>
 
@@ -16,8 +16,8 @@
           <h1 class="titulo">Gerenciar usuário</h1>
           <form>
             <div class="form-item">
-              <label for="nome_usuario">Nome completo:</label>
-              <input type="text" id="nome_usuario" v-model="novo_nome" />
+              <label for="nome">Nome completo:</label>
+              <input type="text" id="nome" v-model="novo_nome" />
             </div>
 
             <div class="form-item identificacao">
@@ -29,30 +29,26 @@
             <div class="form-item">
               <label for="data_de_nascimento">Data de nascimento:</label>
               <input type="date" id="data_de_nascimento" v-model="novo_data_de_nascimento" />
-              <!-- <span id="idade"
-                >Idade: <strong>{{ idadeHoje || '___' }} ano(s)</strong></span
-              > -->
             </div>
 
             <div class="form-item">
               <label for="tipo_de_refeicao">Classificação:</label>
               <select name="tipo_de_refeicao" id="tipo_de_refeicao" v-model="novo_classificacao">
-                <option value="-" disabled>Selecione um tipo</option>
-                <option value="abrigo">Civis do abrigo</option>
-                <option value="apoio">Pessoal de Apoio</option>
-                <option value="crianca1">Criança até 1 ano</option>
-                <option value="crianca12">Criança de 1 a 12 anos</option>
+                <ClassificacaoUsuario></ClassificacaoUsuario>
               </select>
             </div>
 
             <div class="form-item">
-              <label for="tipo_de_refeicao">Tipo de alimentação:</label>
-              <select name="tipo_de_refeicao" id="tipo_de_refeicao" v-model="novo_tipo_alimentacao">
-                <option value="-" disabled>Selecione um tipo</option>
-                <option value="comum">Comum</option>
-                <option value="indigena">Indígena</option>
+              <label for="tipo_alimentacao">Tipo de alimentação:</label>
+              <select name="tipo_alimentacao" id="tipo_alimentacao" v-model="novo_tipo_alimentacao">
+                <option value="normal">Normal</option>
                 <option value="especial">Especial</option>
               </select>
+            </div>
+
+            <div class="form-item" v-show="novo_tipo_alimentacao == 'especial'">
+              <label for="observacoes">Observações:</label>
+              <input type="text" id="observacoes" v-model="novo_observacoes" />
             </div>
 
             <div class="button_area">
@@ -108,19 +104,20 @@
 import axios from 'axios';
 import PageArea from '../layouts/PageArea.vue';
 import ModalConfirmacao from '../layouts/Modals/ModalConfirmacao.vue';
+import ClassificacaoUsuario from '../layouts/options/ClassificacaoUsuario.vue';
 
 export default {
   components: {
     PageArea,
     ModalConfirmacao,
+    ClassificacaoUsuario,
   },
   data() {
     return {
-      modalAtivo: false,
-      modalConfirmacaoAtivo: false,
       identificacao: '',
       nome: '',
       data_de_nascimento: '2000-01-01',
+      modalAtivo: false,
       loading: false,
       id: 0,
       novo_nome: '',
@@ -128,9 +125,20 @@ export default {
       novo_data_de_nascimento: '2000-01-01',
       novo_classificacao: '-',
       novo_tipo_alimentacao: '-',
+      novo_observacoes: '-',
+      modalConfirmacaoAtivo: false,
+      modal_titulo: '',
+      modal_conteudo: '',
+      backgourndModal: 'background_success',
     };
   },
   methods: {
+    abrirModal(tipo, titulo, conteudo) {
+      this.backgourndModal = 'background_' + tipo;
+      this.modal_titulo = titulo;
+      this.modal_conteudo = conteudo;
+      this.modalConfirmacaoAtivo = true;
+    },
     encontarUsuario() {
       if (this.identificacao || this.nome) {
         this.loading = true;
@@ -153,20 +161,21 @@ export default {
             this.novo_data_de_nascimento = r.data.cliente.data_de_nascimento;
             this.novo_classificacao = r.data.cliente.classificacao;
             this.novo_tipo_alimentacao = r.data.cliente.tipo_alimentacao;
+            this.novo_observacoes = r.data.cliente.observacoes;
             this.modalAtivo = true;
           })
           .catch((e) => {
-            alert(`O servidor retornou o seguinte erro:\n\t ${e.response.data.erro}\n\nPor favor, verifique os dados digitados e tente novamente.`);
+            this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível atender à solicitação, tente novamente. \n\n Caso o erro persista, informe esta mensagem ao administrador: \n *${e.response.data.erro}*`);
           })
           .finally(() => {
             this.loading = false;
           });
       } else {
-        alert('Preencha o identificação ou o nome e data de nascimento para continuar.');
+        this.abrirModal('warning', 'Atenção!', 'Preencha o campo identificação ou nome e data de nascimento para continuar.');
       }
     },
     atualizarUsuario() {
-      if (this.novo_nome && this.novo_identificacao && this.novo_classificacao && this.novo_tipo_alimentacao) {
+      if (this.novo_nome && this.novo_identificacao && this.novo_classificacao && this.novo_classificacao != '-') {
         this.loading = true;
         axios
           .post(
@@ -175,22 +184,22 @@ export default {
               id: this.id,
               nome: this.novo_nome,
               identificacao: this.novo_identificacao,
+              data_de_nascimento: this.novo_data_de_nascimento,
               classificacao: this.novo_classificacao,
               tipo_alimentacao: this.novo_tipo_alimentacao,
-              data_de_nascimento: this.novo_data_de_nascimento,
+              observacoes: this.novo_observacoes,
             },
             {
               headers: { 'Content-Type': 'application/json' },
             }
           )
-          .then((r) => {
-            console.log(r.data);
-            this.limparForm();
+          .then(() => {
             this.modalAtivo = false;
-            this.modalConfirmacaoAtivo = true;
+            this.abrirModal('success', 'Tudo certo por aqui!', `Dados atualizados no banco de dados com sucesso!`);
+            this.limparForm();
           })
           .catch((e) => {
-            alert(`O servidor retornou o seguinte erro:\n\t ${e.response.data.erro}\n\nPor favor, verifique os dados digitados e tente novamente.`);
+            this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível salvar o usuário no banco de dados, tente novamente. \n\n Caso o erro persista, informe esta mensagem ao administrador: \n *${e}*`);
           })
           .finally(() => {
             this.loading = false;
@@ -233,6 +242,7 @@ export default {
       this.novo_data_de_nascimento = '2000-01-01';
       this.novo_classificacao = '-';
       this.novo_tipo_alimentacao = '-';
+      this.novo_observacoes = '-';
     },
   },
 };

@@ -3,20 +3,17 @@
     <template v-slot:titulo> Cadastrar usuário </template>
     <template v-slot:body>
       <transition name="fade">
-        <ModalConfirmacao v-if="modalAtivo">
-          <img src="svg/x.svg" @click="fecharModal()" class="button-fechar" alt="Fechar" />
-          <h3>Tudo certo por aqui!</h3>
-          <p>
-            O usuário "<strong>{{ clienteAtual }}</strong
-            >" foi cadastrado com sucesso!
-          </p>
+        <ModalConfirmacao v-if="modalAtivo" :backgourndModal="backgourndModal">
+          <img src="svg/x.svg" @click="modalAtivo = false" class="button-fechar" alt="Fechar" />
+          <h3>{{ modal_titulo }}</h3>
+          <p>{{ modal_conteudo }}</p>
         </ModalConfirmacao>
       </transition>
 
       <form>
         <div class="form-item">
-          <label for="nome_usuario">Nome completo:</label>
-          <input type="text" id="nome_usuario" v-model="nome" />
+          <label for="nome">Nome completo:</label>
+          <input type="text" id="nome" v-model="nome" />
         </div>
 
         <div class="form-item identificacao">
@@ -31,25 +28,25 @@
         </div>
 
         <div class="form-item">
-          <label for="tipo_de_refeicao">Classificação:</label>
-          <select name="tipo_de_refeicao" id="tipo_de_refeicao" v-model="classificacao">
-            <option value="-" disabled>Selecione um tipo</option>
-            <option value="abrigo">Civis do abrigo</option>
-            <option value="apoio">Pessoal de Apoio</option>
-            <option value="crianca1">Criança até 1 ano</option>
-            <option value="crianca12">Criança de 1 a 12 anos</option>
+          <label for="classificacao">Classificação:</label>
+          <select name="classificacao" id="classificacao" v-model="classificacao">
+            <ClassificacaoUsuario></ClassificacaoUsuario>
           </select>
         </div>
 
         <div class="form-item">
-          <label for="tipo_de_refeicao">Tipo de alimentação:</label>
-          <select name="tipo_de_refeicao" id="tipo_de_refeicao" v-model="tipo_alimentacao">
-            <option value="-" disabled>Selecione um tipo</option>
-            <option value="comum">Comum</option>
-            <option value="indigena">Indígena</option>
+          <label for="tipo_alimentacao">Tipo de alimentação:</label>
+          <select name="tipo_alimentacao" id="tipo_alimentacao" v-model="tipo_alimentacao">
+            <option value="normal">Normal</option>
             <option value="especial">Especial</option>
           </select>
         </div>
+
+        <div class="form-item" v-show="tipo_alimentacao == 'especial'">
+          <label for="observacoes">Observações:</label>
+          <input type="text" id="observacoes" v-model="observacoes" />
+        </div>
+
         <button v-on:click.prevent="cadastrarUsuario()" class="button-large">
           <div class="button_text">
             <img :class="loading || 'hidden'" class="button_loading" src="/svg/animated_loading.svg" alt="loading" />
@@ -62,6 +59,7 @@
 </template>
 
 <script>
+import ClassificacaoUsuario from '../layouts/options/ClassificacaoUsuario.vue';
 import PageArea from '../layouts/PageArea.vue';
 import ModalConfirmacao from '../layouts/Modals/ModalConfirmacao.vue';
 import axios from 'axios';
@@ -73,15 +71,18 @@ export default {
       identificacao: '',
       data_de_nascimento: '2000-01-01',
       classificacao: '-',
-      tipo_alimentacao: '-',
-      clienteAtual: '',
+      tipo_alimentacao: 'normal',
+      observacoes: '',
       loading: false,
       modalAtivo: false,
+      backgourndModal: 'background_success',
+      modal_titulo: '-',
+      modal_conteudo: '-',
     };
   },
   methods: {
     cadastrarUsuario() {
-      if (this.nome && this.identificacao && this.data_de_nascimento && this.classificacao && this.tipo_alimentacao) {
+      if (this.nome && this.identificacao && this.data_de_nascimento && this.classificacao != '-') {
         this.loading = true;
         axios
           .post(
@@ -92,42 +93,46 @@ export default {
               data_de_nascimento: this.data_de_nascimento,
               classificacao: this.classificacao,
               tipo_alimentacao: this.tipo_alimentacao,
+              observacoes: this.observacoes,
             },
             {
               headers: { 'Content-Type': 'application/json' },
             }
           )
           .then((r) => {
-            this.clienteAtual = r.data.nome;
-            this.modalAtivo = true;
+            this.abrirModal('success', 'Tudo certo por aqui!', `O usuário *${r.data.nome}* foi salvo no banco de dados com sucesso!`);
+            this.limparForm();
           })
           .catch((e) => {
-            alert(e.response.data);
+            this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível salvar o usuário no banco de dados, tente novamente. \n\n Caso o erro persista, informe esta mensagem ao administrador: \n *${e}*`);
           })
           .finally(() => {
             this.loading = false;
           });
       } else {
-        alert('Preencha todos os campos adequadamente para continuar.');
+        this.abrirModal('warning', 'Atenção!', 'Preenchar todos os campos corretamente para continuar.');
       }
-    },
-    fecharModal() {
-      this.modalAtivo = false;
-      this.limparForm();
     },
     limparForm() {
       this.nome = '';
       this.identificacao = '';
       this.data_de_nascimento = '2000-01-01';
       this.classificacao = '-';
-      this.tipo_alimentacao = '-';
-      this.clienteAtual = '';
+      this.tipo_alimentacao = 'normal';
+      this.observacoes = '';
       this.loading = false;
+    },
+    abrirModal(tipo, titulo, conteudo) {
+      this.backgourndModal = 'background_' + tipo;
+      this.modal_titulo = titulo;
+      this.modal_conteudo = conteudo;
+      this.modalAtivo = true;
     },
   },
   components: {
     PageArea,
     ModalConfirmacao,
+    ClassificacaoUsuario,
   },
 };
 </script>

@@ -806,10 +806,10 @@ fieldset legend {
 .modal_confirmacao {
   position: fixed;
   top: 2em;
+  z-index: 10;
   right: 50%;
   -webkit-transform: translateX(50%);
           transform: translateX(50%);
-  background: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
   border-radius: 16px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -939,5 +939,18 @@ fieldset legend {
   opacity: 0;
   -webkit-transform: translate(50%, -5em);
           transform: translate(50%, -5em);
+}
+
+.background_error {
+  background-image: -webkit-gradient(linear, right top, left top, from(#ff5a5a), to(#ff0505));
+  background-image: linear-gradient(to left, #ff5a5a, #ff0505);
+}
+
+.background_success {
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+}
+
+.background_warning {
+  background-image: linear-gradient(62deg, #fff600 0%, #ff9b00 100%);
 }
 /*# sourceMappingURL=style.css.map */
