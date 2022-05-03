@@ -165,7 +165,7 @@ export default {
             this.modalAtivo = true;
           })
           .catch((e) => {
-            this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível atender à solicitação, tente novamente. \n\n Caso o erro persista, informe esta mensagem ao administrador: \n *${e.response.data.erro}*`);
+            this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível atender à solicitação, tente novamente. \n\n Caso o erro persista, informe esta mensagem ao administrador: \n *${e}*`);
           })
           .finally(() => {
             this.loading = false;

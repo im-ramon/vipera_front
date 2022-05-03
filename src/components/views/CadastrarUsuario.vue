@@ -93,7 +93,7 @@ export default {
               data_de_nascimento: this.data_de_nascimento,
               classificacao: this.classificacao,
               tipo_alimentacao: this.tipo_alimentacao,
-              observacoes: this.observacoes,
+              observacoes: !this.observacoes ? 'Não há' : this.observacoes,
             },
             {
               headers: { 'Content-Type': 'application/json' },
@@ -104,6 +104,7 @@ export default {
             this.limparForm();
           })
           .catch((e) => {
+            console.log(e);
             this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível salvar o usuário no banco de dados, tente novamente. \n\n Caso o erro persista, informe esta mensagem ao administrador: \n *${e}*`);
           })
           .finally(() => {

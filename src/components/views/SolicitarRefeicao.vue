@@ -12,7 +12,7 @@
 
       <div id="modal_consulta" v-if="modalAtivo">
         <div id="modal-area">
-          <img src="svg/x.svg" alt="barcode" class="button-fechar" @click="modalAtivo = false" />
+          <img src="svg/x.svg" alt="barcode" class="button-fechar" @click="limparForm()" />
           <h1 class="titulo">Solicitar refeição</h1>
           <form>
             <div class="form-item">
@@ -55,17 +55,17 @@
               <fieldset>
                 <legend>Horário solicitados</legend>
                 <div class="form-sub_item">
-                  <input type="checkbox" value="cafe" v-model="horariosSolicitados" id="cafe" />
+                  <input type="checkbox" v-model="horariosSolicitados.cafe" id="cafe" />
                   <label for="cafe">Café da manhã</label>
                 </div>
 
                 <div class="form-sub_item">
-                  <input type="checkbox" value="almoco" v-model="horariosSolicitados" id="almoco" />
+                  <input type="checkbox" v-model="horariosSolicitados.almoco" id="almoco" />
                   <label for="almoco">Almoço</label>
                 </div>
 
                 <div class="form-sub_item">
-                  <input type="checkbox" value="janta" v-model="horariosSolicitados" id="janta" />
+                  <input type="checkbox" v-model="horariosSolicitados.janta" id="janta" />
                   <label for="janta">Janta</label>
                 </div>
               </fieldset>
@@ -75,7 +75,12 @@
               <label for="data_solicitada">Data solicitada:</label>
               <input type="date" id="data_solicitada" v-model="data_solicitada" />
             </div>
-            <button v-on:click.prevent="solicitarRefeicao()" class="button-large">Solictar refeição</button>
+            <button v-on:click.prevent="solicitarRefeicao()" class="button-large">
+              <div class="button_text">
+                <img :class="loading || 'hidden'" class="button_loading" src="/svg/animated_loading.svg" alt="loading" />
+                <span :class="!loading || 'hidden'">Solictar refeição</span>
+              </div>
+            </button>
           </form>
         </div>
       </div>
@@ -138,8 +143,12 @@ export default {
       modal_titulo: '',
       modal_conteudo: '',
       backgourndModal: 'background_success',
-      horariosSolicitados: [],
-      data_solicitada: '2022-05-02', // ZERAR
+      horariosSolicitados: {
+        cafe: false,
+        almoco: false,
+        janta: false,
+      },
+      data_solicitada: '2022-05-12', // ZERAR
     };
   },
   methods: {
@@ -184,6 +193,16 @@ export default {
         this.abrirModal('warning', 'Atenção!', 'Preencha o campo identificação ou nome e data de nascimento para continuar.');
       }
     },
+    limparForm() {
+      this.id = 0;
+      this.nome = '';
+      this.data_de_nascimento = '2000-01-01';
+      this.classificacao = '-';
+      this.tipo_alimentacao = 'normal';
+      this.observacoes = '';
+      this.loading = false;
+      this.modalAtivo = false;
+    },
     solicitarRefeicao() {
       let hoje = new Date();
       let dataSolicitda = new Date(`${this.data_solicitada} 23:59:59`);
@@ -191,10 +210,41 @@ export default {
       let diferencaMs = dataSolicitda.getTime() - hoje.getTime();
       let msBase = 129600000; // 36 horas de limite para solicitar
 
-      if (diferencaMs > msBase) {
-        console.log('Solicitar pela API AQUI');
+      if (this.horariosSolicitados.cafe || this.horariosSolicitados.almoco || this.horariosSolicitados.janta) {
+        if (diferencaMs > msBase) {
+          this.loading = true;
+          axios
+            .post(
+              process.env.VUE_APP_URL_BASE_API + 'api/refeicao/solicitar',
+              {
+                cliente_id: this.id,
+                data: this.data_solicitada,
+                cafe: this.horariosSolicitados.cafe,
+                almoco: this.horariosSolicitados.almoco,
+                janta: this.horariosSolicitados.janta,
+                classificacao: this.classificacao,
+                tipo_alimentacao: this.tipo_alimentacao,
+              },
+              {
+                headers: { 'Content-Type': 'application/json' },
+              }
+            )
+            .then(() => {
+              this.abrirModal('success', 'Tudo certo por aqui!', `A refeição foi solicitada com sucesso!`);
+              this.limparForm();
+            })
+            .catch((e) => {
+              console.log(e);
+              this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível atender à solicitação, tente novamente. \n\n Caso o erro persista, informe esta mensagem ao administrador: \n *${e}*`);
+            })
+            .finally(() => {
+              this.loading = false;
+            });
+        } else {
+          this.abrirModal('warning', 'Atenção!', 'As solicitações de refeições só podem ser feitas até às 12:00h do dia anterior à data desejada para recebimento. Por favor, selecione uma data válida.');
+        }
       } else {
-        this.abrirModal('warning', 'Atenção!', 'As solicitações de refeições só podem ser feitas até às 12:00h do dia anterior à data desejada para recebimento. Por favor, selecione uma data válida.');
+        this.abrirModal('warning', 'Atenção!', 'Escolha pelo menos um horário de refeição para continuar.');
       }
     },
   },
