@@ -216,14 +216,14 @@ export default {
           .get(process.env.VUE_APP_URL_BASE_API + 'api/cliente/deletar/' + this.id, {
             headers: { 'Content-Type': 'application/json' },
           })
-          .then((r) => {
-            console.log(r.data);
+          .then(() => {
             this.limparForm();
+            this.abrirModal('success', 'Tudo certo por aqui!', `O usuário foi excluído do banco de dados!`);
             this.modalAtivo = false;
             this.modalConfirmacaoAtivo = true;
           })
           .catch((e) => {
-            alert(`O servidor retornou o seguinte erro:\n\t ${e.response.data.erro}\n\nPor favor, verifique os dados digitados e tente novamente.`);
+            this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível excluir o usário solicitado. \n *${e}*`);
           })
           .finally(() => {
             this.loading = false;

@@ -12,7 +12,7 @@
 
 ​ **Operação Acolhida** é uma operação brasileira deflagrada pelo **Exército Brasileiro** desde fevereiro de 2018 que visa proteger os venezuelanos que atravessam a fronteira, prestando auxílio humanitário aos imigrantes venezuelanos em situação de vulnerabilidade, refugiados da crise política, institucional e socioeconômica que acomete a República Bolivariana da Venezuela.
 
-<h4>Finalidade do _Vipera_. :heavy_check_mark:</h4>
+<h4>Finalidade do Vipera: :heavy_check_mark:</h4>
 
 ​ O Vipera é uma aplicação Web que realiza todo controle logístico das alimentações distribuídas nos abrigos organizados pelo Exército Brasileiro na Operação Acolhida, na Venezuela. A aplicação permite realizar a solicitação da refeição com antecedência (um dia) para confecção da mesma, realizado também a confirmação do recebimento no dia solicitado (dia seguinte). O controle é feito por meio da leitura do código de barras do cartão de identificação do usuário atendido. Também é possível visualizar as métricas e índices do histórico de solicitações.
 
