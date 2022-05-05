@@ -362,6 +362,44 @@ main {
     }
 }
 
+.refeicao_atual {
+    background: $branco;
+    border-radius: $borderRadius;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $cinza_transparente50;
+    cursor: pointer;
+    margin-left: 4px;
+    padding: 4px 14px;
+    user-select: none;
+
+    &:hover {
+        img {
+            transform: rotate(270deg) scale(1.3);
+            transition: transform 0.3s ease-in-out;
+        }
+    }
+
+    img {
+        margin-left: 10px;
+        transition: transform 0.3s ease-in-out;
+        filter: invert(47%) sepia(62%) saturate(427%) hue-rotate(89deg) brightness(93%) contrast(95%);
+    }
+}
+
+.h3_alerta {
+    color: $danger;
+    text-align: center;
+}
+
+.refeicao_solicitada {
+    background: #d1ffce;
+    border: 1px solid $cinza_transparente50;
+    border-radius: $borderRadius;
+    padding: 3px 3px;
+}
+
 #modal_consulta {
     position: fixed;
     top: 0;
@@ -393,6 +431,26 @@ main {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1em;
+
+            &.presencao {
+                display: flex;
+                flex-direction: column;
+
+                h4 {
+                    text-align: center;
+                }
+                p {
+                    text-align: center;
+                }
+
+                .form-sub_item {
+                    display: block;
+                    width: 90%;
+                    padding: 5px;
+                    border-radius: $borderRadius;
+                    border: 1px solid $cinza_transparente50;
+                }
+            }
 
             .form-sub_item {
                 display: flex;
@@ -716,4 +774,17 @@ fieldset {
 
 .background_warning {
     background-image: linear-gradient(62deg, #fff600 0%, #ff9b00 100%);
+}
+
+.background-amarelo-suave {
+    background: #ffffc3;
+}
+.background-verde-suave {
+    background: #d2ffd2;
+}
+.background-azul-suave {
+    background: #c3e1ff;
+}
+.background-vermelho-suave {
+    background: #ffe6e6;
 }

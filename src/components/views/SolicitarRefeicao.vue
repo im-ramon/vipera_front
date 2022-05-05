@@ -130,7 +130,7 @@ export default {
   },
   data() {
     return {
-      identificacao: '12345', //APAGUE
+      identificacao: '',
       id: 0,
       nome: '',
       data_de_nascimento: '2000-01-01',
@@ -148,7 +148,7 @@ export default {
         almoco: false,
         janta: false,
       },
-      data_solicitada: '2022-05-12', // ZERAR
+      data_solicitada: '2000-01-01', // ZERAR
     };
   },
   methods: {

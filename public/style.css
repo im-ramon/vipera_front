@@ -455,6 +455,59 @@ main .page_area form .form-item.identificacao img {
   width: 20px;
 }
 
+.refeicao_atual {
+  background: #ffffff;
+  border-radius: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid #79797950;
+  cursor: pointer;
+  margin-left: 4px;
+  padding: 4px 14px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.refeicao_atual:hover img {
+  -webkit-transform: rotate(270deg) scale(1.3);
+          transform: rotate(270deg) scale(1.3);
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+
+.refeicao_atual img {
+  margin-left: 10px;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  -webkit-filter: invert(47%) sepia(62%) saturate(427%) hue-rotate(89deg) brightness(93%) contrast(95%);
+          filter: invert(47%) sepia(62%) saturate(427%) hue-rotate(89deg) brightness(93%) contrast(95%);
+}
+
+.h3_alerta {
+  color: #dc3546;
+  text-align: center;
+}
+
+.refeicao_solicitada {
+  background: #d1ffce;
+  border: 1px solid #79797950;
+  border-radius: 16px;
+  padding: 3px 3px;
+}
+
 #modal_consulta {
   position: fixed;
   top: 0;
@@ -499,6 +552,32 @@ main .page_area form .form-item.identificacao img {
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   gap: 1em;
+}
+
+#modal-area form fieldset.presencao {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#modal-area form fieldset.presencao h4 {
+  text-align: center;
+}
+
+#modal-area form fieldset.presencao p {
+  text-align: center;
+}
+
+#modal-area form fieldset.presencao .form-sub_item {
+  display: block;
+  width: 90%;
+  padding: 5px;
+  border-radius: 16px;
+  border: 1px solid #79797950;
 }
 
 #modal-area form fieldset .form-sub_item {
@@ -952,5 +1031,21 @@ fieldset legend {
 
 .background_warning {
   background-image: linear-gradient(62deg, #fff600 0%, #ff9b00 100%);
+}
+
+.background-amarelo-suave {
+  background: #ffffc3;
+}
+
+.background-verde-suave {
+  background: #d2ffd2;
+}
+
+.background-azul-suave {
+  background: #c3e1ff;
+}
+
+.background-vermelho-suave {
+  background: #ffe6e6;
 }
 /*# sourceMappingURL=style.css.map */
