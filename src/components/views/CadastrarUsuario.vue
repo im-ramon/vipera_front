@@ -18,7 +18,7 @@
 
         <div class="form-item identificacao">
           <label for="identificacao">Identificação:</label>
-          <input type="text" id="identificacao" v-model="identificacao" />
+          <input type="text" id="identificacao" v-model="identificacao" required />
           <img src="svg/barcode.svg" alt="barcode" />
         </div>
 
@@ -104,8 +104,13 @@ export default {
             this.limparForm();
           })
           .catch((e) => {
-            console.log(e);
-            this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível salvar o usuário no banco de dados, tente novamente. \n\n Caso o erro persista, informe esta mensagem ao administrador: \n *${e}*`);
+            if (e.response.data.message) {
+              if (e.response.data.message.includes('[23000]')) {
+                this.abrirModal('error', 'Desculpe, algo deu errado...', `O número de identificação *${this.identificacao}* já está cadastrado no banco de dados. Por favor, verifique o número digitado ou insira um novo.`);
+              }
+            } else {
+              this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível salvar o usuário no banco de dados, tente novamente. \n\n Caso o erro persista, informe esta mensagem ao administrador: \n *${e}*`);
+            }
           })
           .finally(() => {
             this.loading = false;

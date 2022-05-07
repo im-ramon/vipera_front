@@ -1,10 +1,10 @@
 <template>
   <header>
     <div id="data_hoje">
-      <div class="calendar refeicao" title="Clique para trocar a refeição" @click="alterarRefeicao()">
+      <!-- <div class="calendar refeicao" title="Clique para trocar a refeição" @click="alterarRefeicao()">
         <img src="svg/food.svg" alt="Calendário" />
         <span>Refeição: {{ refeicaoAtual }}</span>
-      </div>
+      </div> -->
       <div class="calendar">
         <img src="svg/calendar.svg" alt="Calendário" />
         <span>{{ dataHoje }}</span>
@@ -59,50 +59,77 @@ export default {
     dataHoje() {
       let date = new Date();
       let dia = date.getDate();
+      let semana = date.getDay();
       let mes = '-';
       let ano = date.getFullYear();
       switch (date.getMonth()) {
         case 0:
-          mes = 'Jan';
+          mes = 'jan';
           break;
         case 1:
-          mes = 'Fev';
+          mes = 'fev';
           break;
         case 2:
-          mes = 'Mar';
+          mes = 'mar';
           break;
         case 3:
-          mes = 'Abr';
+          mes = 'abr';
           break;
         case 4:
-          mes = 'Maio';
+          mes = 'maio';
           break;
         case 5:
-          mes = 'Jun';
+          mes = 'jun';
           break;
         case 6:
-          mes = 'Jul';
+          mes = 'jul';
           break;
         case 7:
-          mes = 'Ago';
+          mes = 'ago';
           break;
         case 8:
-          mes = 'Set';
+          mes = 'set';
           break;
         case 9:
-          mes = 'Out';
+          mes = 'out';
           break;
         case 10:
-          mes = 'Nov';
+          mes = 'nov';
           break;
         case 11:
-          mes = 'Dez';
+          mes = 'dez';
           break;
 
         default:
           break;
       }
-      return `${dia} ${mes} ${ano}`;
+      switch (semana) {
+        case 1:
+          semana = 'Segunda-feira';
+          break;
+        case 2:
+          semana = 'Terça-feira';
+          break;
+        case 3:
+          semana = 'Quarta-feira';
+          break;
+        case 4:
+          semana = 'Quinta-feira';
+          break;
+        case 5:
+          semana = 'Sexta-feira';
+          break;
+        case 6:
+          semana = 'Sábado';
+          break;
+        case 7:
+          mes = 'Domingo';
+          break;
+
+        default:
+          break;
+      }
+      return `${dia} de ${mes} de ${ano} - ${semana}`;
     },
   },
   mounted() {

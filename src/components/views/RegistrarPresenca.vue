@@ -117,7 +117,7 @@
       <form>
         <div class="form-item identificacao">
           <label for="identificacao">Identificação:</label>
-          <input type="text" id="identificacao" autofocus v-model="identificacao" :disabled="nome.length > 0" />
+          <input type="text" id="identificacao" v-model="identificacao" :disabled="nome.length > 0" />
           <img src="svg/barcode.svg" alt="barcode" />
         </div>
         <h3 style="text-align: center">ou</h3>
