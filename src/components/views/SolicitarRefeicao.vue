@@ -247,8 +247,12 @@ export default {
               this.limparForm();
             })
             .catch((e) => {
-              console.log(e);
-              this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível atender à solicitação, tente novamente. \n\n Caso o erro persista, informe esta mensagem ao administrador: \n *${e}*`);
+              //   console.log(e);
+              if (e.response.data) {
+                this.abrirModal('error', 'Desculpe, algo deu errado...', `${e.response.data.erro}`);
+              } else {
+                this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível atender à solicitação, tente novamente. \n\n Caso o erro persista, informe esta mensagem ao administrador: \n *${e}*`);
+              }
             })
             .finally(() => {
               this.loading = false;
