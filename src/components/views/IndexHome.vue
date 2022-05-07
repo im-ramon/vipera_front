@@ -13,7 +13,10 @@
 
         <div id="grafico-2" class="grafico-item">
           <h4>Total de usuários cadastradas</h4>
-          <h2>{{ totalUsuarios }}</h2>
+          <h2>
+            <img v-if="loading" src="/svg/animated_loading.svg" alt="loading" />
+            <span v-else>{{ totalUsuarios }}</span>
+          </h2>
         </div>
 
         <!-- <div id="grafico-3" class="grafico-item">

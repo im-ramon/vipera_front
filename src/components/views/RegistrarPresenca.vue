@@ -132,12 +132,20 @@
           <label for="identificacao">Data de nascimento:</label>
           <input type="date" id="identificacao" v-model="data_de_nascimento" :disabled="identificacao.length > 0" />
         </div>
-        <button v-on:click.prevent="encontarUsuario()" class="button-large">
-          <div class="button_text">
-            <img :class="loading || 'hidden'" class="button_loading" src="/svg/animated_loading.svg" alt="loading" />
-            <span :class="!loading || 'hidden'">Consultar</span>
-          </div>
-        </button>
+        <div class="button_area">
+          <button v-on:click.prevent="encontarUsuario()" class="button-large">
+            <div class="button_text">
+              <img :class="loading || 'hidden'" class="button_loading" src="/svg/animated_loading.svg" alt="loading" />
+              <span :class="!loading || 'hidden'">Consultar</span>
+            </div>
+          </button>
+          <button v-on:click.prevent="limparFormInicial()" class="button-large button-large-delete">
+            <div class="button_text">
+              <img :class="loading || 'hidden'" class="button_loading" src="/svg/animated_loading.svg" alt="loading" />
+              <span :class="!loading || 'hidden'">Limpar formulário</span>
+            </div>
+          </button>
+        </div>
       </form>
     </template>
   </PageArea>
@@ -196,6 +204,11 @@ export default {
     },
   },
   methods: {
+    limparFormInicial() {
+      this.identificacao = '';
+      this.nome = '';
+      this.data_de_nascimento = '2000-01-01';
+    },
     statusRefeicao(refeicao) {
       if (this.horariosSolicitados[refeicao] === '1') {
         return 'Solicitado e não consumido';
@@ -217,6 +230,20 @@ export default {
       } else {
         return 'background-vermelho-suave';
       }
+    },
+    limparForm() {
+      this.identificacao = '';
+      this.nome = '';
+      this.data_de_nascimento = '2000-01-01';
+      this.id = 0;
+      this.classificacao = '-';
+      this.tipo_alimentacao = '-';
+      this.observacoes = '-';
+      this.horariosSolicitados = {
+        cafe: 0,
+        almoco: 0,
+        janta: 0,
+      };
     },
     abrirModal(tipo, titulo, conteudo) {
       this.backgourndModal = 'background_' + tipo;
@@ -250,7 +277,7 @@ export default {
             this.procurarRefeicao();
           })
           .catch((e) => {
-            this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível atender à solicitação, tente novamente. \n\n Caso o erro persista, informe esta mensagem ao administrador: \n *${e.response.data.erro}*`);
+            this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi posssível encontar o usário solicitado. Caso o erro persista, informe esta mensagem ao administrador: \n *${e.response.data.erro}*`);
           })
           .finally(() => {
             this.loading = false;

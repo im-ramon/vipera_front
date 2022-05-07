@@ -104,12 +104,20 @@
           <input type="date" id="identificacao" v-model="data_de_nascimento" :disabled="identificacao.length > 0" />
         </div>
 
-        <button v-on:click.prevent="encontarUsuario()" class="button-large">
-          <div class="button_text">
-            <img :class="loading || 'hidden'" class="button_loading" src="/svg/animated_loading.svg" alt="loading" />
-            <span :class="!loading || 'hidden'">Consultar</span>
-          </div>
-        </button>
+        <div class="button_area">
+          <button v-on:click.prevent="encontarUsuario()" class="button-large">
+            <div class="button_text">
+              <img :class="loading || 'hidden'" class="button_loading" src="/svg/animated_loading.svg" alt="loading" />
+              <span :class="!loading || 'hidden'">Consultar</span>
+            </div>
+          </button>
+          <button v-on:click.prevent="limparFormInicial()" class="button-large button-large-delete">
+            <div class="button_text">
+              <img :class="loading || 'hidden'" class="button_loading" src="/svg/animated_loading.svg" alt="loading" />
+              <span :class="!loading || 'hidden'">Limpar formulário</span>
+            </div>
+          </button>
+        </div>
       </form>
     </template>
   </PageArea>
@@ -148,10 +156,15 @@ export default {
         almoco: false,
         janta: false,
       },
-      data_solicitada: '2000-01-01', // ZERAR
+      data_solicitada: new Date().toLocaleDateString('en-CA'),
     };
   },
   methods: {
+    limparFormInicial() {
+      this.identificacao = '';
+      this.nome = '';
+      this.data_de_nascimento = '2000-01-01';
+    },
     abrirModal(tipo, titulo, conteudo) {
       this.backgourndModal = 'background_' + tipo;
       this.modal_titulo = titulo;
@@ -184,7 +197,7 @@ export default {
             this.modalAtivo = true;
           })
           .catch((e) => {
-            this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível atender à solicitação, tente novamente. \n\n Caso o erro persista, informe esta mensagem ao administrador: \n *${e.response.data.erro}*`);
+            this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível encontar o usário solicitado. \n\n Caso o erro persista, informe esta mensagem ao administrador: \n *${e.response.data.erro}*`);
           })
           .finally(() => {
             this.loading = false;

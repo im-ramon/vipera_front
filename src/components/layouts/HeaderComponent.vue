@@ -19,7 +19,7 @@
         <a href="#">Meu perfil</a>
         <a href="#" class="bg-danger-soft">Sair</a>
         <hr />
-        <span id="version">Versão 1.1.0 | Alpha</span>
+        <span id="version">Versão 1.0.1 | Alpha</span>
       </div>
     </nav>
   </header>

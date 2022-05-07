@@ -20,12 +20,6 @@
               <input type="text" id="nome" v-model="novo_nome" />
             </div>
 
-            <div class="form-item identificacao">
-              <label for="identificacao">Identificação:</label>
-              <input type="text" id="identificacao" v-model="novo_identificacao" />
-              <img src="svg/barcode.svg" alt="barcode" />
-            </div>
-
             <div class="form-item">
               <label for="data_de_nascimento">Data de nascimento:</label>
               <input type="date" id="data_de_nascimento" v-model="novo_data_de_nascimento" />
@@ -49,6 +43,12 @@
             <div class="form-item" v-show="novo_tipo_alimentacao == 'especial'">
               <label for="observacoes">Observações:</label>
               <input type="text" id="observacoes" v-model="novo_observacoes" />
+            </div>
+
+            <div class="form-item identificacao">
+              <label for="identificacao">Identificação:</label>
+              <input type="text" id="identificacao" v-model="novo_identificacao" />
+              <img src="svg/barcode.svg" alt="barcode" />
             </div>
 
             <div class="button_area">
@@ -89,12 +89,20 @@
           <input type="date" id="identificacao" v-model="data_de_nascimento" :disabled="identificacao.length > 0" />
         </div>
 
-        <button v-on:click.prevent="encontarUsuario()" class="button-large">
-          <div class="button_text">
-            <img :class="loading || 'hidden'" class="button_loading" src="/svg/animated_loading.svg" alt="loading" />
-            <span :class="!loading || 'hidden'">Consultar</span>
-          </div>
-        </button>
+        <div class="button_area">
+          <button v-on:click.prevent="encontarUsuario()" class="button-large">
+            <div class="button_text">
+              <img :class="loading || 'hidden'" class="button_loading" src="/svg/animated_loading.svg" alt="loading" />
+              <span :class="!loading || 'hidden'">Consultar</span>
+            </div>
+          </button>
+          <button v-on:click.prevent="limparFormInicial()" class="button-large button-large-delete">
+            <div class="button_text">
+              <img :class="loading || 'hidden'" class="button_loading" src="/svg/animated_loading.svg" alt="loading" />
+              <span :class="!loading || 'hidden'">Limpar formulário</span>
+            </div>
+          </button>
+        </div>
       </form>
     </template>
   </PageArea>
@@ -133,6 +141,11 @@ export default {
     };
   },
   methods: {
+    limparFormInicial() {
+      this.identificacao = '';
+      this.nome = '';
+      this.data_de_nascimento = '2000-01-01';
+    },
     abrirModal(tipo, titulo, conteudo) {
       this.backgourndModal = 'background_' + tipo;
       this.modal_titulo = titulo;
@@ -165,7 +178,7 @@ export default {
             this.modalAtivo = true;
           })
           .catch((e) => {
-            this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível atender à solicitação, tente novamente. \n\n Caso o erro persista, informe esta mensagem ao administrador: \n *${e}*`);
+            this.abrirModal('error', 'Desculpe, algo deu errado...', `Não foi possível encontrar o usuário solicitado. \n\n Caso o erro persista, informe esta mensagem ao administrador: \n *${e}*`);
           })
           .finally(() => {
             this.loading = false;
@@ -187,7 +200,7 @@ export default {
               data_de_nascimento: this.novo_data_de_nascimento,
               classificacao: this.novo_classificacao,
               tipo_alimentacao: this.novo_tipo_alimentacao,
-              observacoes: this.novo_observacoes,
+              observacoes: this.novo_observacoes == '' ? '-' : this.novo_observacoes,
             },
             {
               headers: { 'Content-Type': 'application/json' },

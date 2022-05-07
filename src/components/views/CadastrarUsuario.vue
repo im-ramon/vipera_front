@@ -16,12 +16,6 @@
           <input type="text" id="nome" v-model="nome" />
         </div>
 
-        <div class="form-item identificacao">
-          <label for="identificacao">Identificação:</label>
-          <input type="text" id="identificacao" v-model="identificacao" required />
-          <img src="svg/barcode.svg" alt="barcode" />
-        </div>
-
         <div class="form-item">
           <label for="data_de_nascimento">Data de nascimento:</label>
           <input type="date" id="data_de_nascimento" v-model="data_de_nascimento" />
@@ -47,12 +41,25 @@
           <input type="text" id="observacoes" v-model="observacoes" />
         </div>
 
-        <button v-on:click.prevent="cadastrarUsuario()" class="button-large">
-          <div class="button_text">
-            <img :class="loading || 'hidden'" class="button_loading" src="/svg/animated_loading.svg" alt="loading" />
-            <span :class="!loading || 'hidden'">Cadastrar</span>
-          </div>
-        </button>
+        <div class="form-item identificacao">
+          <label for="identificacao">Identificação:</label>
+          <input type="text" id="identificacao" v-model="identificacao" required />
+          <img src="svg/barcode.svg" alt="barcode" />
+        </div>
+        <div class="button_area">
+          <button v-on:click.prevent="cadastrarUsuario()" class="button-large">
+            <div class="button_text">
+              <img :class="loading || 'hidden'" class="button_loading" src="/svg/animated_loading.svg" alt="loading" />
+              <span :class="!loading || 'hidden'">Cadastrar</span>
+            </div>
+          </button>
+          <button v-on:click.prevent="limparFormInicial()" class="button-large button-large-delete">
+            <div class="button_text">
+              <img :class="loading || 'hidden'" class="button_loading" src="/svg/animated_loading.svg" alt="loading" />
+              <span :class="!loading || 'hidden'">Limpar formulário</span>
+            </div>
+          </button>
+        </div>
       </form>
     </template>
   </PageArea>
@@ -81,6 +88,14 @@ export default {
     };
   },
   methods: {
+    limparFormInicial() {
+      this.nome = '';
+      this.identificacao = '';
+      this.data_de_nascimento = '2000-01-01';
+      this.classificacao = '-';
+      this.tipo_alimentacao = 'normal';
+      this.observacoes = '';
+    },
     cadastrarUsuario() {
       if (this.nome && this.identificacao && this.data_de_nascimento && this.classificacao != '-') {
         this.loading = true;
@@ -104,7 +119,7 @@ export default {
             this.limparForm();
           })
           .catch((e) => {
-            if (e.response.data.message) {
+            if (e.response.data && e.response.data.message) {
               if (e.response.data.message.includes('[23000]')) {
                 this.abrirModal('error', 'Desculpe, algo deu errado...', `O número de identificação *${this.identificacao}* já está cadastrado no banco de dados. Por favor, verifique o número digitado ou insira um novo.`);
               }
