@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import PageArea from '../layouts/PageArea.vue';
+import PageArea from '@/components/layouts/PageArea.vue';
 export default {
   components: {
     PageArea,

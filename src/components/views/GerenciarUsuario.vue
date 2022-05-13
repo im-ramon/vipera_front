@@ -110,9 +110,9 @@
 
 <script>
 import axios from 'axios';
-import PageArea from '../layouts/PageArea.vue';
-import ModalConfirmacao from '../layouts/Modals/ModalConfirmacao.vue';
-import ClassificacaoUsuario from '../layouts/options/ClassificacaoUsuario.vue';
+import PageArea from '@/components/layouts/PageArea.vue';
+import ModalConfirmacao from '@/components/layouts/Modals/ModalConfirmacao.vue';
+import ClassificacaoUsuario from '@/components/layouts/options/ClassificacaoUsuario.vue';
 
 export default {
   components: {

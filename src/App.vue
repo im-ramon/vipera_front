@@ -3,13 +3,6 @@
   <main>
     <HeaderComponent></HeaderComponent>
     <section id="root">
-      <!-- <router-view v-slot="{ Component }">
-        <transition name="home">
-          <component :is="Component" />
-        </transition>
-      </router-view> -->
-      <!-- <transition name="home"> -->
-      <!-- </transition> -->
       <router-view></router-view>
     </section>
     <FooterComponent></FooterComponent>
@@ -17,9 +10,9 @@
 </template>
 
 <script>
-import HeaderComponent from './components/layouts/HeaderComponent.vue';
-import FooterComponent from './components/layouts/FooterComponent.vue';
-import SidebarComponent from './components/layouts/SidebarComponent.vue';
+import HeaderComponent from '@/components/layouts/HeaderComponent.vue';
+import FooterComponent from '@/components/layouts/FooterComponent.vue';
+import SidebarComponent from '@/components/layouts/SidebarComponent.vue';
 
 export default {
   name: 'App',

@@ -41,9 +41,9 @@
 </template>
 
 <script>
-import PageArea from '../layouts/PageArea.vue';
-import ChartConsumoPorMes from '../charts/ChartConsumoPorMes.vue';
-import ChartTipoUsuario from '../charts/ChartTipoUsuario.vue';
+import PageArea from '@/components/layouts/PageArea.vue';
+import ChartConsumoPorMes from '@/components/charts/ChartConsumoPorMes.vue';
+import ChartTipoUsuario from '@/components/charts/ChartTipoUsuario.vue';
 import axios from 'axios';
 
 export default {
@@ -79,6 +79,9 @@ export default {
         })
         .catch((e) => {
           console.log('Ocorreu um erro ao tentar acessar as estatísticas. Mensagem: ' + e);
+          this.totalRefeicoes = '-';
+          this.totalUsuarios = '-';
+          this.loading = false;
         });
     },
   },

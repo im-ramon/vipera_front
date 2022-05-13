@@ -66,9 +66,9 @@
 </template>
 
 <script>
-import ClassificacaoUsuario from '../layouts/options/ClassificacaoUsuario.vue';
-import PageArea from '../layouts/PageArea.vue';
-import ModalConfirmacao from '../layouts/Modals/ModalConfirmacao.vue';
+import ClassificacaoUsuario from '@/components/layouts/options/ClassificacaoUsuario.vue';
+import PageArea from '@/components/layouts/PageArea.vue';
+import ModalConfirmacao from '@/components/layouts/Modals/ModalConfirmacao.vue';
 import axios from 'axios';
 
 export default {
