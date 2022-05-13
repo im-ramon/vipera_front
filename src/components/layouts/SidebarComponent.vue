@@ -1,33 +1,33 @@
 <template>
   <aside>
     <div id="logo">
-      <router-link to="/" id="logo_area">
+      <router-link to="/app/home" id="logo_area">
         <img src="logo.png" alt="Logo 'E'" />
         <span>Vipera</span>
       </router-link>
     </div>
     <div id="links">
-      <router-link to="/" class="links-item">
+      <router-link to="/app/home" class="links-item">
         <img src="/svg/home.svg" alt="Home" />
         <span>Página inicial</span>
       </router-link>
-      <router-link to="/cadastrarusuario" class="links-item">
+      <router-link to="/app/cadastrarusuario" class="links-item">
         <img src="/svg/user-add.svg" alt="Cadastrar usuário" />
         <span>Cadastrar usuário</span>
       </router-link>
-      <router-link to="/gerenciarusuario" class="links-item">
+      <router-link to="/app/gerenciarusuario" class="links-item">
         <img src="/svg/user-edit.svg" alt="Cadastrar usuário" />
         <span>Gerenciar usuários</span>
       </router-link>
-      <router-link to="/solicitarrefeicao" class="links-item">
+      <router-link to="/app/solicitarrefeicao" class="links-item">
         <img src="/svg/clipboard.svg" alt="Solicitações de refeição" />
         <span>Solicitar refeição</span>
       </router-link>
-      <router-link to="/registrarpresenca" class="links-item">
+      <router-link to="/app/registrarpresenca" class="links-item">
         <img src="/svg/user-check.svg" alt="Registrar presença" />
         <span>Registrar presença</span>
       </router-link>
-      <router-link to="/visualizarrelatorios" class="links-item">
+      <router-link to="/app/visualizarrelatorios" class="links-item">
         <img src="/svg/chart-bar.svg" alt="Relatórios" />
         <span>Relatórios</span>
       </router-link>
